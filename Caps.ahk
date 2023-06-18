@@ -11,6 +11,7 @@ StartTerminal() {
 		Run wt.exe
 }
 
+; Shortcut menu for the app ?
 StartRun() {
 	Send {ralt down}
 	Send {space down}
@@ -23,9 +24,9 @@ SleepOut() {
 	DllCall("PowrProf\SetSuspendState", "Int", 0, "Int", 1, "Int", 0)
 }
 
-AppSKey::StartRun()
-
 #If GetKeyState("Capslock","T")
+
+AppSKey::StartRun()
 
 q::SleepOut()
 w::up
