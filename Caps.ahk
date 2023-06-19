@@ -24,38 +24,48 @@ SleepOut() {
 	DllCall("PowrProf\SetSuspendState", "Int", 0, "Int", 1, "Int", 0)
 }
 
+TurnOffMonitor() {
+	;screensaver ?
+	;SendMessage 0x112, 0xF140, 0, , Program Manager ; Start screensaver
+	
+	Sleep 1000
+	SendMessage 0x112, 0xF170, 2, , Program Manager ; Monitor off
+
+	;lock workstation
+	;DllCall("LockWorkStation")	
+}
+
 #If GetKeyState("Capslock","T")
 
 AppSKey::StartRun()
 
-q::SleepOut()
+q::TurnOffMonitor()
 w::up
-e::media_prev
+e::ins
 r::pgdn
 t::home
 y::end
 u::pgup
-;i
-o::media_next
+i::volume_down
+o::media_play_Pause
 p::volume_up
-;[
-;]
+[::media_prev
+]::media_next
 ;\
 
 a::left
 s::down
 d::right
-f::media_play_Pause
+f::mbutton
 g::lbutton
 h::rbutton
 j::left
-i::up
 k::down
 l::right
-`;::mbutton
+`;::
 ;apostrophe
 
-z::volume_down
+z::SleepOut()
 x::browser_forward
 c::+up
 v::^left
