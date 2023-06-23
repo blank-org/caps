@@ -39,7 +39,7 @@ TurnOffMonitor() {
 
 AppSKey::StartRun()
 
-q::TurnOffMonitor()
+q::SleepOut()
 w::up
 e::ins
 r::pgdn
@@ -65,7 +65,7 @@ l::right
 `;::
 ;apostrophe
 
-z::SleepOut()
+z::TurnOffMonitor()
 x::browser_forward
 c::+up
 v::^left

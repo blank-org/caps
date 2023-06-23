@@ -7,7 +7,7 @@ Adds keyboard shortcuts for functionalities like wsad to directional keys
 
 | Serial | Key | Action |
 |--------|-----|--------|
-1|q|TURN OFF MONITOR
+1|q|SLEEP
 2|w|up
 3|e|insert
 4|r|page down
@@ -32,7 +32,7 @@ Adds keyboard shortcuts for functionalities like wsad to directional keys
 23|l|➡️
 24|;|
 25|'|
-26|z|SLEEP
+26|z|TURN OFF MONITOR
 27|x|browser forward
 28|c|shift + ⬆️
 29|v|ctrl + ⬅️
