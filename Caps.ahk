@@ -1,6 +1,6 @@
 ﻿#SingleInstance Force
 
-#include Switch-Windows_same-App.ahk
+#include AutoHotkey-script-Open-Show-Apps\Switch-opened-windows-of-same-App.ahk
 #include Explorer_Get-Selection.ahk
 
 StartTerminal() {
