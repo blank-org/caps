@@ -11,8 +11,8 @@ Adds keyboard shortcuts for functionalities like wsad to directional keys
 2|w|up
 3|e|insert
 4|r|page down
-5|t|home
-6|y|end
+5|t|end
+6|y|home
 7|u|page up
 8|i|volume down
 9|o|⏯️

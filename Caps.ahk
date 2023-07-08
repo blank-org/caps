@@ -43,8 +43,8 @@ q::SleepOut()
 w::up
 e::ins
 r::pgdn
-t::home
-y::end
+t::end
+y::home
 u::pgup
 i::volume_down
 o::media_play_Pause
