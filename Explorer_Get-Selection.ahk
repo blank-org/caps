@@ -1,3 +1,5 @@
+;Source: https://stackoverflow.com/a/39263800/483588 | CC BY-SA 3.0
+;Original author: errorseven | https://stackoverflow.com/users/1914172/errorseven
 
 Explorer_GetSelection(hwnd="") {
     WinGet, process, processName, % "ahk_id" hwnd := hwnd? hwnd:WinExist("A")
