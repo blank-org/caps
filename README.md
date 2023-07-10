@@ -44,11 +44,11 @@ Built using: [AutoHotkey](https://www.autohotkey.com)
 26|<kbd>Enter</kbd>|
 27|<kbd>Z</kbd>|TURN OFF MONITOR
 28|<kbd>X</kbd>|Browser Forward
-29|<kbd>C</kbd>|Shift + ⬆️
-30|<kbd>V</kbd>|Ctrl + ⬅️
+29|<kbd>C</kbd>|Shift + ⬇️
+30|<kbd>V</kbd>|Ctrl + ➡️
 31|<kbd>B</kbd>|Browser Back
-32|<kbd>N</kbd>|Ctrl + ➡️
-33|<kbd>M</kbd>|Shift + ⬇️
+32|<kbd>N</kbd>|Ctrl + ⬅️
+33|<kbd>M</kbd>|Shift + ⬆️
 34|<kbd>,</kbd>
 35|<kbd>.</kbd>
 36|<kbd>/</kbd>

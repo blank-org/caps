@@ -68,11 +68,11 @@ l::right
 
 z::TurnOffMonitor()
 x::browser_forward
-c::+up
-v::^left
+c::+down
+v::^right
 b::browser_back
-n::^right
-m::+down
+n::^left
+m::+up
 ;,
 ;.
 ;/
