@@ -64,6 +64,7 @@ k::down
 l::right
 `;::
 ;apostrophe
+;enter
 
 z::TurnOffMonitor()
 x::browser_forward
@@ -75,6 +76,7 @@ m::+down
 ;,
 ;.
 ;/
+;rshift
 
 ;``
 ;1
