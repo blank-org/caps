@@ -1,4 +1,5 @@
 # Caps
+
 Caps - AHK
 
 Help you navigate and edit text faster with a physical keyboard by shortcuts like: <kbd>Caps</kbd> + <kbd>Y</kbd> : <kbd>Home</kbd> - i.e. cursor to beginning of the line.  
@@ -100,8 +101,10 @@ or,
 	%AppData%\Microsoft\Windows\Start Menu\Programs\Startup\
 
 
-
-
-
 ## Supported platforms:
 `Windows`
+
+
+## Author
+
+[Ujjwal Singh @ ujnotes.com](https://ujnotes.com/about_me)
