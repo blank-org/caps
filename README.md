@@ -1,9 +1,11 @@
 # Caps
 Caps - AHK
 
-Adds keyboard shortcuts for functionalities like wsad to directional keys
+Help you navigate and edit text faster with a physical keyboard by shortcuts like: Caps lock + Y : Home - i.e. cursor to beginning of the line. Also WSAD to directional keys - in combination with the Caps lock button
 
-## In combination with the Caps lock button
+Built upon: [AutoHotkey](https://www.autohotkey.com/)
+
+
 
 | Serial | Key | Action |
 |--------|-----|--------|
@@ -77,3 +79,26 @@ Adds keyboard shortcuts for functionalities like wsad to directional keys
 | Serial | Key | Action |
 |--------|-----|--------|
 1|\`|SWITCH WINDOW SAMEAPP
+
+
+## Publish
+Built using AHK2EXE
+
+Version number added using: https://github.com/electron/rcedit
+
+rcedit caps-0.1.exe --set-version-string "FileDescription" "Shortcuts execuationer" --set-version-string "ProductVersion" "0.1" --set-version-string "ProductName" "Caps - keyboard shortcuts" --set-version-string "ProductVersion" "0.1"
+
+Zipped:
+zip Caps-0.1.zip caps.exe LICENSE README.md
+
+
+## Supported platforms:
+Windows
+
+## Credits:
+
+[JuanmaMenendez - github: AutoHotkey-script-Open-Show-Apps](https://github.com/JuanmaMenendez/AutoHotkey-script-Open-Show-Apps)  
+License: MIT
+
+[errorseven - stackoverflow QA](https://stackoverflow.com/a/39263800/483588)  
+License: CC BY-SA 3.0
