@@ -3,7 +3,7 @@
 Caps - AHK
 
 Help you navigate and edit text faster with a physical keyboard by shortcuts like: <kbd>Caps</kbd> + <kbd>Y</kbd> : <kbd>Home</kbd> - i.e. cursor to beginning of the line.  
-Also <kbd>W</kbd><kbd>S</kbd><kbd>A</kbd><kbd>D</kbd> to directional keys.
+Also <kbd>W</kbd><kbd>S</kbd><kbd>A</kbd><kbd>D</kbd> to direction keys.
 
 The main goal is to Not have to lift the hands from their default typing resting position - i.e. index fingers on the <kbd>F</kbd> & <kbd>J</kbd> keys.
 
@@ -14,7 +14,7 @@ Built using: [AutoHotkey](https://www.autohotkey.com)
 
 { optimized for Ten Keyless (TKL) keyboards }
 
-#### In combination with the <kbd>Caps</kbd> button
+#### In combination with the <kbd>Caps</kbd> key
 | Serial | Key | Action |
 |--------|-----|--------|
 1|<kbd>Q</kbd>|SLEEP
@@ -84,7 +84,7 @@ Built using: [AutoHotkey](https://www.autohotkey.com)
 65|<kbd>→</kbd>|+
 66|<kbd>Menu</kbd>|APP SHORTCUT MENU
 
-#### In combination with the <kbd>Alt</kbd> button
+#### In combination with the <kbd>Alt</kbd> key
 | Serial | Key | Action |
 |--------|-----|--------|
 1|<kbd>`</kbd>|SWITCH WINDOW SAMEAPP
