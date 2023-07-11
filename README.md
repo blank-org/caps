@@ -66,7 +66,7 @@ Built using: [AutoHotkey](https://www.autohotkey.com)
 49|<kbd>-</kbd>
 50|<kbd>=</kbd>
 51|<kbd>Backspace</kbd>|<kbd>Delete</kbd>
-52|<kbd>Space</kbd>|TERMINAL
+52|<kbd>Space</kbd>|TERMINAL : active path
 53|<kbd>Prtsc</kbd>|<kbd>7</kbd>
 54|<kbd>Scrlk</kbd>|<kbd>8</kbd>
 55|<kbd>Pause</kbd>|<kbd>9</kbd>
