@@ -10,6 +10,11 @@ The main goal is to Not have to lift the hands from their default typing resting
 Built using: [AutoHotkey](https://www.autohotkey.com)
 
 
+##### NOTE :
+
+<kbd>Caps</kbd> lock functionality will stop working once the program begins. In the rare case if you need that functionality then suspend the program from the notification area (`Keyboard icon` > `Right Click` > `Suspend Hotkeys`)
+
+
 ## Shortcuts
 
 #### In combination with the <kbd>Caps</kbd> key
