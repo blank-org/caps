@@ -7,7 +7,7 @@
  
 2. Version number added using: [github: electron/rcedit](https://github.com/electron/rcedit)
 
- > rcedit caps.exe --set-version-string "FileDescription" "Shortcuts execuationer" --set-version-string "ProductVersion" "0.1" --set-version-string "ProductName" "Caps - keyboard shortcuts" --set-version-string "ProductVersion" "0.1"
+ > rcedit caps.exe --set-version-string "FileDescription" "Caps - shortcuts executioner" --set-version-string "ProductVersion" "0.4" --set-version-string "ProductName" "Caps - keyboard shortcuts" --set-version-string "ProductVersion" "0.4"
 
 3. Package :
 
