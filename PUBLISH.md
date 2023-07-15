@@ -3,7 +3,7 @@
 1. Built using
 
  >AutoHotkey : `AHK2EXE`  
- Ahk2Exe.exe /in caps.ahk /out caps.exe /icon Icon/Keyboard.ico
+ Ahk2Exe.exe /in caps.ahk /out caps.exe /icon Resource/Icon/Keyboard.ico
  
 2. Version number added using: [github: electron/rcedit](https://github.com/electron/rcedit)
 
