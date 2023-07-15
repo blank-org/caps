@@ -70,10 +70,10 @@ z::TurnOffMonitor()
 x::browser_back
 c::+down
 v::^right
-b::browser_forward
+;b::
 n::^left
 m::+up
-;,
+,::browser_forward
 ;.
 ;/
 ;rshift

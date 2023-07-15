@@ -49,10 +49,10 @@ Built using: [AutoHotkey](https://www.autohotkey.com)
 28|<kbd>X</kbd>|<kbd>Browser ←</kbd>
 29|<kbd>C</kbd>|<kbd>Shift</kbd> + <kbd>↓</kbd>
 30|<kbd>V</kbd>|<kbd>Ctrl</kbd> + <kbd>→</kbd>
-31|<kbd>B</kbd>|<kbd>Browser →</kbd>
+31|<kbd>B</kbd>
 32|<kbd>N</kbd>|<kbd>Ctrl</kbd> + <kbd>←</kbd>
 33|<kbd>M</kbd>|<kbd>Shift</kbd> + <kbd>→</kbd>
-34|<kbd>,</kbd>
+34|<kbd>,</kbd>|<kbd>Browser →</kbd>
 35|<kbd>.</kbd>
 36|<kbd>/</kbd>
 37|<kbd>Shift</kbd>
