@@ -27,12 +27,12 @@ Built using: [AutoHotkey](https://www.autohotkey.com)
 5|<kbd>T</kbd>|<kbd>End</kbd>
 6|<kbd>Y</kbd>|<kbd>Home</kbd>
 7|<kbd>U</kbd>|<kbd>Page Up</kbd>
-8|<kbd>I</kbd>|<kbd>Volume Down</kbd>
-9|<kbd>O</kbd>|⏯️
-10|<kbd>P</kbd>|<kbd>Volume Up</kbd>
-11|<kbd>[</kbd>|⏮️
-12|<kbd>]</kbd>|⏭️
-13|<kbd>\\</kbd>
+8|<kbd>I</kbd>|<kbd>↑</kbd>
+9|<kbd>O</kbd>|Volume Down
+10|<kbd>P</kbd>|<kbd>⏯️</kbd>
+11|<kbd>[</kbd>|Volume Up
+12|<kbd>]</kbd>|⏮️
+13|<kbd>\\</kbd>|⏭️
 14|<kbd>A</kbd>|<kbd>←</kbd>
 15|<kbd>S</kbd>|<kbd>↓</kbd>
 16|<kbd>D</kbd>|<kbd>→</kbd>
@@ -40,7 +40,6 @@ Built using: [AutoHotkey](https://www.autohotkey.com)
 18|<kbd>G</kbd>|<kbd>Mouse Left button</kbd>
 19|<kbd>H</kbd>|<kbd>Mouse Right button</kbd>
 20|<kbd>J</kbd>|<kbd>←</kbd>
-21|<kbd>I</kbd>|<kbd>↑</kbd>
 22|<kbd>K</kbd>|<kbd>↓</kbd>
 23|<kbd>L</kbd>|<kbd>→</kbd>
 24|<kbd>;</kbd>|
