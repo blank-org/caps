@@ -96,13 +96,21 @@ Built using: [AutoHotkey](https://www.autohotkey.com)
 
 ## Installation
 
-Place shortcut in the `Startup` directory:
+1. Recommended path:
 
- `Run:`  `shell:startup`
+		\Programs\Caps\
+  
+2. Place shortcut in the `Startup` directory:
 
-or,
+ `Run:`  `shell:startup` 
 
-	%AppData%\Microsoft\Windows\Start Menu\Programs\Startup\
+ or,
+ 
+		%AppData%\Microsoft\Windows\Start Menu\Programs\Startup\
+  
+3. Place shortcut to the `Keyboard-map` and `Readme` in Start menu:
+
+		%AppData%\Microsoft\Windows\Start Menu\
 
 
 ## Supported platforms:
