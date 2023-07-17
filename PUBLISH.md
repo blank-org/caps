@@ -11,4 +11,4 @@
 
 3. Package :
 
- > zip -j Caps-0.4.zip caps.exe CREDITS.md LICENSE README.md Resource/Keyboard-map-TKS.svg
+ > zip -j Caps-0.4.zip caps.exe CREDITS.md LICENSE README.md Install.md Resource/Keyboard-map-TKS.svg
