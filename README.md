@@ -24,8 +24,8 @@ Built using: [AutoHotkey](https://www.autohotkey.com)
 2|<kbd>W</kbd>|<kbd>↑</kbd>
 3|<kbd>E</kbd>|<kbd>Insert</kbd>
 4|<kbd>R</kbd>|<kbd>Page Down</kbd>
-5|<kbd>T</kbd>|<kbd>End</kbd>
-6|<kbd>Y</kbd>|<kbd>Home</kbd>
+5|<kbd>T</kbd>|<kbd>Home</kbd>
+6|<kbd>Y</kbd>|<kbd>End</kbd>
 7|<kbd>U</kbd>|<kbd>Page Up</kbd>
 8|<kbd>I</kbd>|<kbd>↑</kbd>
 9|<kbd>O</kbd>|Volume Down
@@ -48,9 +48,9 @@ Built using: [AutoHotkey](https://www.autohotkey.com)
 27|<kbd>Z</kbd>|TURN OFF MONITOR
 28|<kbd>X</kbd>|<kbd>Browser ←</kbd>
 29|<kbd>C</kbd>|<kbd>Shift</kbd> + <kbd>↓</kbd>
-30|<kbd>V</kbd>|<kbd>Ctrl</kbd> + <kbd>→</kbd>
+30|<kbd>V</kbd>|<kbd>Ctrl</kbd> + <kbd>←</kbd>
 31|<kbd>B</kbd>
-32|<kbd>N</kbd>|<kbd>Ctrl</kbd> + <kbd>←</kbd>
+32|<kbd>N</kbd>|<kbd>Ctrl</kbd> + <kbd>→</kbd>
 33|<kbd>M</kbd>|<kbd>Shift</kbd> + <kbd>↑</kbd>
 34|<kbd>,</kbd>|<kbd>Browser →</kbd>
 35|<kbd>.</kbd>
