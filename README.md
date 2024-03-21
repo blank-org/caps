@@ -51,7 +51,7 @@ Built using: [AutoHotkey](https://www.autohotkey.com)
 30|<kbd>V</kbd>|<kbd>Ctrl</kbd> + <kbd>→</kbd>
 31|<kbd>B</kbd>
 32|<kbd>N</kbd>|<kbd>Ctrl</kbd> + <kbd>←</kbd>
-33|<kbd>M</kbd>|<kbd>Shift</kbd> + <kbd>→</kbd>
+33|<kbd>M</kbd>|<kbd>Shift</kbd> + <kbd>↑</kbd>
 34|<kbd>,</kbd>|<kbd>Browser →</kbd>
 35|<kbd>.</kbd>
 36|<kbd>/</kbd>
