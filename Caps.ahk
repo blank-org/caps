@@ -1,4 +1,10 @@
-﻿#SingleInstance Force
+﻿;@Ahk2Exe-SetDescription Caps - shortcuts executioner
+;@Ahk2Exe-SetProductVersion 0.5.
+;@Ahk2Exe-SetProductName Caps - keyboard shortcuts
+;@Ahk2Exe-SetFileVersion 0.5.0.0
+;@Ahk2Exe-SetCopyright 2024 - Ujjwal Singh @ ujnotes.com
+
+#SingleInstance Force
 
 #include AutoHotkey-script-Open-Show-Apps\Switch-opened-windows-of-same-App.ahk
 #include Explorer_Get-Selection.ahk
