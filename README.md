@@ -12,7 +12,8 @@ Built using: [AutoHotkey](https://www.autohotkey.com)
 
 ##### NOTE :
 
-<kbd>Caps</kbd> lock functionality will stop working once the program begins. In the rare case if you need that functionality then suspend the program from the notification area (`Keyboard icon` > `Right Click` > `Suspend Hotkeys`)
+Normal <kbd>Caps</kbd> lock functionality will stop working once the program begins.  
+In the rare case if you need that functionality then suspend the program from the notification area (`Keyboard icon` > `Right Click` > `Suspend Hotkeys`)
 
 
 ## Shortcuts
@@ -42,7 +43,7 @@ Built using: [AutoHotkey](https://www.autohotkey.com)
 20|<kbd>J</kbd>|<kbd>←</kbd>
 22|<kbd>K</kbd>|<kbd>↓</kbd>
 23|<kbd>L</kbd>|<kbd>→</kbd>
-24|<kbd>;</kbd>|
+24|<kbd>;</kbd>|<kbd>Volume Mute</kbd>
 25|<kbd>'</kbd>|
 26|<kbd>Enter</kbd>|
 27|<kbd>Z</kbd>|TURN OFF MONITOR
@@ -93,10 +94,20 @@ Built using: [AutoHotkey](https://www.autohotkey.com)
 |--------|-----|--------|
 1|<kbd>`</kbd>|SWITCH WINDOW SAMEAPP
 
+#### Direct (without combination)
+| Serial | Key | Action |
+|--------|-----|--------|
+1|<kbd>Prtsc</kbd>|Volume Mute
+2|<kbd>Scrlk</kbd>|Volume Down
+3|<kbd>Pause</kbd>|Volume Up
 
 ## Supported platforms:
 `Windows`
 
+
+## Additional repo
+[github : FuPeiJiang/VD.ahk](https://github.com/FuPeiJiang/VD.ahk/tree/v2_port)
+Place in root
 
 ## Author
 

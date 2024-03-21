@@ -35,6 +35,10 @@ TurnOffMonitor() {
 	;DllCall("LockWorkStation")	
 }
 
+pause::volume_up
+scrollLock::volume_down
+printScreen::volume_mute
+
 #If GetKeyState("Capslock","T")
 
 AppSKey::StartRun()
@@ -43,15 +47,15 @@ q::SleepOut()
 w::up
 e::ins
 r::pgdn
-t::end
-y::home
+t::home
+y::end
 u::pgup
-i::volume_down
-o::media_play_Pause
-p::volume_up
-[::media_prev
-]::media_next
-;\
+i::up
+o::volume_down
+p::media_play_pause
+[::volume_up
+]::media_prev
+\::media_next
 
 a::left
 s::down
@@ -62,16 +66,16 @@ h::rbutton
 j::left
 k::down
 l::right
-`;::
+`;::volume_mute
 ;apostrophe
 ;enter
 
 z::TurnOffMonitor()
 x::browser_back
 c::+down
-v::^right
-;b::
-n::^left
+v::^left
+;b
+n::^right
 m::+up
 ,::browser_forward
 ;.
