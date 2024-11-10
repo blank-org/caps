@@ -1,13 +1,21 @@
-﻿;@Ahk2Exe-SetDescription Caps - shortcuts executioner
+﻿#Requires AutoHotkey v1.1
+
+;@Ahk2Exe-SetDescription Caps - shortcuts executioner
 ;@Ahk2Exe-SetProductVersion 0.5.
 ;@Ahk2Exe-SetProductName Caps - keyboard shortcuts
-;@Ahk2Exe-SetFileVersion 0.5.0.0
+;@Ahk2Exe-SetFileVersion 0.6.0.0
 ;@Ahk2Exe-SetCopyright 2024 - Ujjwal Singh @ ujnotes.com
 
 #SingleInstance Force
 
 #include AutoHotkey-script-Open-Show-Apps\Switch-opened-windows-of-same-App.ahk
 #include Explorer_Get-Selection.ahk
+
+PasteType() {
+	Sleep 2000
+	SetKeyDelay 20
+	Send %Clipboard%
+}
 
 StartTerminal() {
 	v := Explorer_GetSelection()
@@ -80,7 +88,7 @@ z::TurnOffMonitor()
 x::browser_back
 c::+down
 v::^left
-;b
+b::PasteType()
 n::^right
 m::+up
 ,::browser_forward
