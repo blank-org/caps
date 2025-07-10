@@ -46,7 +46,7 @@ In the rare case if you need that functionality then suspend the program from th
 24|<kbd>;</kbd>|<kbd>Volume Mute</kbd>
 25|<kbd>'</kbd>|
 26|<kbd>Enter</kbd>|
-27|<kbd>Z</kbd>|TURN OFF MONITOR
+27|<kbd>Z</kbd>|Turn off MONITOR
 28|<kbd>X</kbd>|<kbd>Browser ←</kbd>
 29|<kbd>C</kbd>|<kbd>Shift</kbd> + <kbd>↓</kbd>
 30|<kbd>V</kbd>|<kbd>Ctrl</kbd> + <kbd>←</kbd>
@@ -54,8 +54,8 @@ In the rare case if you need that functionality then suspend the program from th
 32|<kbd>N</kbd>|<kbd>Ctrl</kbd> + <kbd>→</kbd>
 33|<kbd>M</kbd>|<kbd>Shift</kbd> + <kbd>↑</kbd>
 34|<kbd>,</kbd>|<kbd>Browser →</kbd>
-35|<kbd>.</kbd>
-36|<kbd>/</kbd>
+35|<kbd>.</kbd>|Toggle DARK MODE
+36|<kbd>/</kbd>|Open Code editor
 37|<kbd>Shift</kbd>
 38|<kbd>`</kbd>
 39|<kbd>1</kbd>
@@ -85,14 +85,14 @@ In the rare case if you need that functionality then suspend the program from th
 63|<kbd>↓</kbd>|<kbd>.</kbd>
 64|<kbd>←</kbd>|<kbd>-</kbd>
 65|<kbd>→</kbd>|<kbd>+</kbd>
-66|<kbd>Menu</kbd>|APP SHORTCUT MENU
+66|<kbd>Menu</kbd>|APP SHORTCUT menu
 
 [ #53 - #61 : optimized for Ten Keyless (TKL) keyboards ]
 
 #### In combination with the <kbd>Alt</kbd> key
 | Serial | Key | Action |
 |--------|-----|--------|
-1|<kbd>`</kbd>|SWITCH WINDOW SAMEAPP
+1|<kbd>`</kbd>|SWITCH WINDOW sameapp
 
 #### Direct (without combination)
 | Serial | Key | Action |
@@ -100,6 +100,9 @@ In the rare case if you need that functionality then suspend the program from th
 1|<kbd>Prtsc</kbd>|Volume Mute
 2|<kbd>Scrlk</kbd>|Volume Down
 3|<kbd>Pause</kbd>|Volume Up
+
+## Config
+`right_click_left` : maps right click to left click
 
 ## Supported platforms:
 `Windows`

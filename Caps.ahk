@@ -8,46 +8,22 @@
 
 #SingleInstance Force
 
+; Read config.ini to check if right_click_left is enabled
+IniRead, rightClickLeft, %A_ScriptDir%\config.ini, Settings, right_click_left, 0
+; normalize to integer
+; message dialog with value of rightClickLeft
+rightClickLeft := (rightClickLeft = "1" || rightClickLeft = "true") ? 1 : 0
+
 #include AutoHotkey-script-Open-Show-Apps\Switch-opened-windows-of-same-App.ahk
 #include Explorer_Get-Selection.ahk
+#include dark_mode.ahk
+#include paste_type.ahk
+#include start_terminal.ahk
+#include app_menu.ahk
+#include sleep_out.ahk
+#include turn_off_monitor.ahk
+#include start_vscode.ahk
 
-PasteType() {
-	Sleep 2000
-	SetKeyDelay 20
-	Send %Clipboard%
-}
-
-StartTerminal() {
-	v := Explorer_GetSelection()
-	if (v)
-		Run wt.exe -d "%v%"
-	else
-		Run wt.exe
-}
-
-; Shortcut menu for the app ?
-StartRun() {
-	Send {ralt down}
-	Send {space down}
-	Send {space up}
-	Send {ralt up}
-}
-
-SleepOut() {
-	SetCapsLockState, off
-	DllCall("PowrProf\SetSuspendState", "Int", 0, "Int", 1, "Int", 0)
-}
-
-TurnOffMonitor() {
-	;screensaver ?
-	;SendMessage 0x112, 0xF140, 0, , Program Manager ; Start screensaver
-	
-	Sleep 1000
-	SendMessage 0x112, 0xF170, 2, , Program Manager ; Monitor off
-
-	;lock workstation
-	;DllCall("LockWorkStation")	
-}
 
 pause::volume_up
 scrollLock::volume_down
@@ -92,8 +68,8 @@ b::PasteType()
 n::^right
 m::+up
 ,::browser_forward
-;.
-;/
+.::ToggleDarkMode()
+/::Start_VScode()
 ;rshift
 
 ;``
@@ -127,4 +103,8 @@ down::.
 left::-
 right::+
 
+
 *CapsLock up::SetCapsLockState, off
+
+
+#include right_to_left_click.ahk
