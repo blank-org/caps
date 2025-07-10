@@ -1,3 +1,9 @@
+$githubToken = $env:GITHUB_TOKEN_BLANK
+if (-not $githubToken) {
+    Write-Error "GITHUB_TOKEN environment variable not set."
+    exit 1
+}
+
 # Extract version from caps.ahk
 $versionLine = Get-Content caps.ahk | Where-Object { $_ -match '^;@Ahk2Exe-SetFileVersion\s+([\d\.]+)' }
 if ($versionLine -match '^;@Ahk2Exe-SetFileVersion\s+([\d\.]+)') {
@@ -35,11 +41,7 @@ git tag -a "v$version" -m "Release version $version"
 git push origin "v$version"
 
 # Create a GitHub release
-$githubToken = $env:GITHUB_TOKEN_BLANK
-if (-not $githubToken) {
-    Write-Error "GITHUB_TOKEN environment variable not set."
-    exit 1
-}
+
 $releaseUrl = "https://api.github.com/repos/blank-org/caps/releases"
 $releaseBody = @{
     tag_name    = "v$version"
