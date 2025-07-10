@@ -119,3 +119,7 @@ Place in root
 ## Author
 
 [Ujjwal Singh @ ujnotes.com](https://ujnotes.com/about_me)
+
+
+## Todo:
+MacOS support using likely: [hammerspoon](https://www.hammerspoon.org)
