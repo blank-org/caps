@@ -2,10 +2,10 @@
 
 Caps - AHK
 
-Help you navigate and edit text faster with a physical keyboard by shortcuts like: <kbd>Caps</kbd> + <kbd>Y</kbd> : <kbd>Home</kbd> - i.e. cursor to beginning of the line.  
-Also <kbd>W</kbd><kbd>S</kbd><kbd>A</kbd><kbd>D</kbd> to direction keys.
+Helps you navigate and edit text faster on a physical keyboard with shortcuts like: <kbd>Caps</kbd> + <kbd>Y</kbd> : <kbd>Home</kbd> - i.e. cursor to beginning of the line.
+Also <kbd>W</kbd><kbd>S</kbd><kbd>A</kbd><kbd>D</kbd> to <kbd>↑</kbd><kbd>↓</kbd><kbd>←</kbd><kbd>→</kbd> direction keys.
 
-The main goal is to Not have to lift the hands from their default typing resting position - i.e. index fingers on the <kbd>F</kbd> & <kbd>J</kbd> keys.
+The main goal is to Not have to lift the hands from their default type resting position - i.e. index fingers on the <kbd>F</kbd> & <kbd>J</kbd> keys.
 
 Built using: [AutoHotkey](https://www.autohotkey.com)
 
