@@ -23,8 +23,8 @@ In the rare case if you need that functionality then suspend the program from th
 </p>
 
 #### In combination with the <kbd>Caps</kbd> key
-| Serial | Key | Action |
-|--------|-----|--------|
+| Serial | Key | Primary | Modifier | Secondary |
+|--------|-----|---------|----------|-----------|
 1|<kbd>Q</kbd>|SLEEP
 2|<kbd>W</kbd>|<kbd>↑</kbd>
 3|<kbd>E</kbd>|<kbd>Insert</kbd>
@@ -54,7 +54,7 @@ In the rare case if you need that functionality then suspend the program from th
 28|<kbd>X</kbd>|<kbd>Browser ←</kbd>
 29|<kbd>C</kbd>|<kbd>Shift</kbd> + <kbd>↓</kbd>
 30|<kbd>V</kbd>|<kbd>Ctrl</kbd> + <kbd>←</kbd>
-31|<kbd>B</kbd>
+31|<kbd>B</kbd>|paste type|<kbd>space</kbd>|end wait
 32|<kbd>N</kbd>|<kbd>Ctrl</kbd> + <kbd>→</kbd>
 33|<kbd>M</kbd>|<kbd>Shift</kbd> + <kbd>↑</kbd>
 34|<kbd>,</kbd>|<kbd>Browser →</kbd>
