@@ -12,8 +12,10 @@ Built using: [AutoHotkey](https://www.autohotkey.com)
 
 ##### NOTE :
 
-Normal <kbd>Caps</kbd> lock functionality will stop working once the program begins.  
-In the rare case if you need that functionality then suspend the program from the notification area (`Keyboard icon` > `Right Click` > `Suspend Hotkeys`)
+Normal <kbd>Caps</kbd> lock functionality will stop working once the program begins.
+Double tap the <kbd>Caps</kbd> key for normal caps lock opeartion.
+
+In case if you ever need to disable `caps` functionality you may suspend the program from the notification area (`Caps Keyboard icon` > `Right Click` > `Suspend Hotkeys`)
 
 
 ## Shortcuts

@@ -8,6 +8,36 @@
 
 #SingleInstance Force
 
+; Double-tap CapsLock detection
+doubleCapsLockInterval := 300
+lastCapsLockTime := 0
+capsOverrideDisabled := 0
+
+~*CapsLock::
+    now := A_TickCount
+    if (now - lastCapsLockTime < doubleCapsLockInterval) {
+        capsOverrideDisabled := 1
+        SetCapsLockState, On
+        ; Optional: show a tooltip or sound to indicate override is disabled
+    }
+    lastCapsLockTime := now
+return
+
+*CapsLock up::
+    if (capsOverrideDisabled) {
+        ; If CapsLock is now off, re-enable overrides
+        if (GetKeyState("CapsLock", "T") = 0) {
+            capsOverrideDisabled := 0
+        }
+        return
+    } else {
+        SetCapsLockState, off
+        if (GetKeyState("CapsLock", "T") = 0) {
+            capsOverrideDisabled := 0
+        }
+    }
+return
+
 ; Read config.ini to check if right_click_left is enabled
 IniRead, rightClickLeft, %A_ScriptDir%\config.ini, Settings, right_click_left, 0
 ; normalize to integer
@@ -29,7 +59,7 @@ pause::volume_up
 scrollLock::volume_down
 printScreen::volume_mute
 
-#If GetKeyState("Capslock","T")
+#If GetKeyState("Capslock","T") && !capsOverrideDisabled
 
 AppSKey::StartRun()
 
@@ -103,9 +133,6 @@ up::0
 down::.
 left::-
 right::+
-
-
-*CapsLock up::SetCapsLockState, off
 
 
 #include right_to_left_click.ahk
