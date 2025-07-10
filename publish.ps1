@@ -7,7 +7,7 @@ if ($versionLine -match '^;@Ahk2Exe-SetFileVersion\s+([\d\.]+)') {
     exit 1
 }
 
-$zipName = "Caps-$version.zip"
+$zipName = "caps-$version.zip"
 $archiveDir = "archive"
 if (!(Test-Path $archiveDir)) {
     New-Item -ItemType Directory -Path $archiveDir | Out-Null
