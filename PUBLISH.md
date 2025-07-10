@@ -1,12 +1,12 @@
 # Publish
 
-Setup:
+## Setup:
 
 1. Install AHK2EXE (from: AutoHotKey\UX\install-ahk2exe.ahk)
 
-2. Save the default base file in AHK2EXE - v1.1_ > Save
+2. Save the default base file in AHK2EXE directory : v1.1_ > Save
 
-Build:
+## Build:
 
 1. Update version number in scipt (SetFileVersion)
 
@@ -21,5 +21,5 @@ Build:
 3. Package :
 
 ```ps
-Compress-Archive -LiteralPath caps.exe,CREDITS.md,LICENSE,README.md,Install.md,config.ini,Resource/Keyboard-map-TKS.svg -DestinationPath Caps-0.6.zip
+Compress-Archive -LiteralPath caps.exe,CREDITS.md,LICENSE,README.md,Install.md,config.ini,Resource/Keyboard-map-TKS.svg -DestinationPath Caps-0.7.zip
 ```
