@@ -18,6 +18,10 @@ In the rare case if you need that functionality then suspend the program from th
 
 ## Shortcuts
 
+<p align="center">
+    <img src="resource/keyboard-map-tks.svg" alt="Keyboard Shortcut Map" width="99%"/>
+</p>
+
 #### In combination with the <kbd>Caps</kbd> key
 | Serial | Key | Action |
 |--------|-----|--------|
