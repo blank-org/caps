@@ -32,7 +32,7 @@ In the rare case if you need that functionality then suspend the program from th
 5|<kbd>T</kbd>|<kbd>Home</kbd>
 6|<kbd>Y</kbd>|<kbd>End</kbd>
 7|<kbd>U</kbd>|<kbd>Page Up</kbd>
-8|<kbd>I</kbd>|<kbd>↑</kbd>
+8|<kbd>I</kbd>|<kbd>Shift</kbd> + <kbd>↑</kbd>
 9|<kbd>O</kbd>|Volume Down
 10|<kbd>P</kbd>|<kbd>⏯️</kbd>
 11|<kbd>[</kbd>|Volume Up
@@ -44,19 +44,19 @@ In the rare case if you need that functionality then suspend the program from th
 17|<kbd>F</kbd>|<kbd>Mouse Middle button</kbd>
 18|<kbd>G</kbd>|<kbd>Mouse Left button</kbd>
 19|<kbd>H</kbd>|<kbd>Mouse Right button</kbd>
-20|<kbd>J</kbd>|<kbd>←</kbd>
-22|<kbd>K</kbd>|<kbd>↓</kbd>
-23|<kbd>L</kbd>|<kbd>→</kbd>
+20|<kbd>J</kbd>|<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>←</kbd>
+22|<kbd>K</kbd>|<kbd>Shift</kbd> + <kbd>↓</kbd>
+23|<kbd>L</kbd>|<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>→</kbd>
 24|<kbd>;</kbd>|<kbd>Volume Mute</kbd>
 25|<kbd>'</kbd>|
 26|<kbd>Enter</kbd>|
 27|<kbd>Z</kbd>|Turn off MONITOR
 28|<kbd>X</kbd>|<kbd>Browser ←</kbd>
-29|<kbd>C</kbd>|<kbd>Shift</kbd> + <kbd>↓</kbd>
+29|<kbd>C</kbd>|
 30|<kbd>V</kbd>|<kbd>Ctrl</kbd> + <kbd>←</kbd>
 31|<kbd>B</kbd>|paste type|<kbd>space</kbd>|end wait
 32|<kbd>N</kbd>|<kbd>Ctrl</kbd> + <kbd>→</kbd>
-33|<kbd>M</kbd>|<kbd>Shift</kbd> + <kbd>↑</kbd>
+33|<kbd>M</kbd>|
 34|<kbd>,</kbd>|<kbd>Browser →</kbd>
 35|<kbd>.</kbd>|Toggle DARK MODE
 36|<kbd>/</kbd>|Open Code editor
@@ -74,7 +74,7 @@ In the rare case if you need that functionality then suspend the program from th
 48|<kbd>0</kbd>
 49|<kbd>-</kbd>
 50|<kbd>=</kbd>
-51|<kbd>Backspace</kbd>|<kbd>Delete</kbd>
+51|<kbd>Backspace</kbd>|<kbd>Delete</kbd>|<kbd>Ctrl</kbd>|whole word
 52|<kbd>Space</kbd>|TERMINAL : active path
 53|<kbd>Prtsc</kbd>|<kbd>7</kbd>
 54|<kbd>Scrlk</kbd>|<kbd>8</kbd>

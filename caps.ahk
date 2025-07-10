@@ -40,7 +40,7 @@ r::pgdn
 t::home
 y::end
 u::pgup
-i::up
+i::+up
 o::volume_down
 p::media_play_pause
 [::volume_up
@@ -53,20 +53,20 @@ d::right
 f::mbutton
 g::lbutton
 h::rbutton
-j::left
-k::down
-l::right
+j::^+left
+k::+down
+l::^+right
 `;::volume_mute
 ;apostrophe
 ;enter
 
 z::TurnOffMonitor()
 x::browser_back
-c::+down
+;c::
 v::^left
 b::PasteType()
 n::^right
-m::+up
+;m::
 ,::browser_forward
 .::ToggleDarkMode()
 /::Start_VScode()
@@ -86,6 +86,7 @@ m::+up
 ;-
 ;=
 backspace::del
+^backspace::^del
 
 space::StartTerminal()
 
