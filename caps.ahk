@@ -8,6 +8,8 @@
 
 #SingleInstance Force
 
+SetCapsLockState, Off ; Ensure Caps Lock is off when script loads
+
 ; Double-tap CapsLock detection
 doubleCapsLockInterval := 300
 lastCapsLockTime := 0
