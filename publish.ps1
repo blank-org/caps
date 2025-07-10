@@ -13,9 +13,9 @@ if (!(Test-Path $archiveDir)) {
     New-Item -ItemType Directory -Path $archiveDir | Out-Null
 }
 
-# Move earlier zip file to archive dir if exists
-if (Test-Path $zipName) {
-    Move-Item $zipName "$archiveDir\$zipName" -Force
+# Move earlier zip files to archive dir if exist
+Get-ChildItem -Path . -Filter *.zip | ForEach-Object {
+    Move-Item $_.FullName "$archiveDir\$($_.Name)" -Force
 }
 
 & $env:LocalAppData\Programs\AutoHotKey\Compiler\Ahk2Exe.exe /in caps.ahk /out caps.exe /icon Resource/Icon/Keyboard.ico
