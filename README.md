@@ -74,7 +74,7 @@ In case if you ever need to disable `caps` functionality you may suspend the pro
 46|<kbd>8</kbd>
 47|<kbd>9</kbd>
 48|<kbd>0</kbd>
-49|<kbd>-</kbd>
+49|<kbd>-</kbd>|<kbd>—</kbd>
 50|<kbd>=</kbd>
 51|<kbd>Backspace</kbd>|<kbd>Delete</kbd>|<kbd>Ctrl</kbd>|whole word
 52|<kbd>Space</kbd>|TERMINAL : active path
