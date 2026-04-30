@@ -9,13 +9,15 @@
 doubleCapsLockInterval := 300
 lastCapsLockTime := 0
 capsOverrideDisabled := 0
+capsIsHeld := 0
 Caps_ResetState()
 OnMessage(0x218, "Caps_PowerBroadcast")
 
 Caps_ResetState() {
-    global capsOverrideDisabled, lastCapsLockTime
+    global capsOverrideDisabled, lastCapsLockTime, capsIsHeld
     capsOverrideDisabled := 0
     lastCapsLockTime := 0
+    capsIsHeld := 0
     SetCapsLockState, Off
 }
 
@@ -33,27 +35,26 @@ Caps_ReloadAfterResume() {
 }
 
 ~*CapsLock::
+    if (capsIsHeld)
+        return
+    capsIsHeld := 1
     now := A_TickCount
     if (now - lastCapsLockTime < doubleCapsLockInterval) {
         capsOverrideDisabled := 1
         SetCapsLockState, On
-        ; Optional: show a tooltip or sound to indicate override is disabled
     }
     lastCapsLockTime := now
 return
 
 *CapsLock up::
+    capsIsHeld := 0
     if (capsOverrideDisabled) {
-        ; If CapsLock is now off, re-enable overrides
         if (GetKeyState("CapsLock", "T") = 0) {
             capsOverrideDisabled := 0
         }
         return
     } else {
         SetCapsLockState, off
-        if (GetKeyState("CapsLock", "T") = 0) {
-            capsOverrideDisabled := 0
-        }
     }
 return
 
