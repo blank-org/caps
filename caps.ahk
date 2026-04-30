@@ -7,13 +7,34 @@
 ;@Ahk2Exe-SetCopyright 2024 - Ujjwal Singh @ ujnotes.com
 
 #SingleInstance Force
-
-SetCapsLockState, Off ; Ensure Caps Lock is off when script loads
+#InstallKeybdHook
 
 ; Double-tap CapsLock detection
 doubleCapsLockInterval := 300
 lastCapsLockTime := 0
 capsOverrideDisabled := 0
+Caps_ResetState()
+OnMessage(0x218, "Caps_PowerBroadcast")
+
+Caps_ResetState() {
+    global capsOverrideDisabled, lastCapsLockTime
+    capsOverrideDisabled := 0
+    lastCapsLockTime := 0
+    SetCapsLockState, Off
+}
+
+Caps_PowerBroadcast(wParam, lParam, msg, hwnd) {
+    ; PBT_APMRESUMECRITICAL, PBT_APMRESUMESUSPEND, PBT_APMRESUMEAUTOMATIC
+    if (wParam = 0x6 || wParam = 0x7 || wParam = 0x12) {
+        Caps_ResetState()
+        SetTimer, Caps_ReloadAfterResume, -1500
+    }
+    return true
+}
+
+Caps_ReloadAfterResume() {
+    Reload
+}
 
 ~*CapsLock::
     now := A_TickCount
