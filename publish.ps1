@@ -4,20 +4,20 @@ if (-not $githubToken) {
     exit 1
 }
 
-# Extract version from caps.ahk
-$versionLine = Get-Content caps.ahk | Where-Object { $_ -match '^;@Ahk2Exe-SetFileVersion\s+([\d\.]+)' }
-if ($versionLine -match '^;@Ahk2Exe-SetFileVersion\s+([\d\.]+)') {
-    # Extract only the first three numbers (e.g., 1.2.3 from 1.2.3.4)
+$versionEnvPath = Join-Path $PSScriptRoot "build\version.env"
+$versionLine = Get-Content $versionEnvPath | Where-Object { $_ -match '^\s*FILE_VERSION\s*=\s*([\d\.]+)\s*$' } | Select-Object -First 1
+if ($versionLine -match '^\s*FILE_VERSION\s*=\s*([\d\.]+)\s*$') {
     $fullVersion = $Matches[1]
     if ($fullVersion -match '^(\d+\.\d+\.\d+)') {
         $version = $Matches[1]
-    } else {
+    }
+    else {
         Write-Error "Failed to parse version (major.minor.patch) from $fullVersion"
         exit 1
     }
 }
 else {
-    Write-Error "Version not found in caps.ahk"
+    Write-Error "FILE_VERSION not found in $versionEnvPath"
     exit 1
 }
 
@@ -32,7 +32,7 @@ Get-ChildItem -Path . -Filter *.zip | ForEach-Object {
     Move-Item $_.FullName "$archiveDir\$($_.Name)" -Force
 }
 
-& $env:LocalAppData\Programs\AutoHotKey\Compiler\Ahk2Exe.exe /in caps.ahk /out caps.exe /icon Resource/Icon/Keyboard.ico
+& "$PSScriptRoot\make.ps1"
 
 Compress-Archive -LiteralPath caps.exe, CREDITS.md, LICENSE, README.md, Install.md, config.ini, Resource/Keyboard-map-TKS.svg -DestinationPath $zipName
 

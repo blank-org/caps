@@ -8,14 +8,14 @@
 
 ## Build:
 
-1. Update version number in scipt (SetFileVersion)
+1. Update version numbers in `build/version.env`
 
 2. Build
  
  Using AutoHotkey : `AHK2EXE` ( version: `1._` )
 
  ```ps
- & $env:LocalAppData\Programs\AutoHotKey\Compiler\Ahk2Exe.exe /in caps.ahk /out caps.exe /icon Resource/Icon/Keyboard.ico
+ .\make.ps1
  ```
 
 3. Package :

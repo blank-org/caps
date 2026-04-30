@@ -1,10 +1,6 @@
 ﻿#Requires AutoHotkey v1.1
 
-;@Ahk2Exe-SetDescription Caps - shortcuts executioner
-;@Ahk2Exe-SetProductVersion 0.8
-;@Ahk2Exe-SetProductName Caps - keyboard shortcuts
-;@Ahk2Exe-SetFileVersion 0.8.4.0
-;@Ahk2Exe-SetCopyright 2024 - Ujjwal Singh @ ujnotes.com
+#Include %A_ScriptDir%\build\version-info.ahk
 
 #SingleInstance Force
 #InstallKeybdHook
