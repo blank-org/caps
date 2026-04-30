@@ -4,9 +4,11 @@ This note documents `assemble.ps1`, the files it expects, and the path behavior 
 
 ## Files
 
-- `assemble.ps1`: rebuilds the keyboard map SVG by loading a base SVG and injecting text labels from `map.csv`.
+- `assemble.ps1`: rebuilds the keyboard map SVG by loading a base SVG and injecting text labels from `map_keys.csv` and `map_caps.csv`, plus icon images from `map_icons.csv`.
 - `base_svg.svg`: SVG structure used as the base document.
-- `map.csv`: label data used to create new `<text>` elements.
+- `map_keys.csv`: key label data used to create base `<text>` elements.
+- `map_caps.csv`: caps-layer label data used to create overlay `<text>` elements.
+- `map_icons.csv`: icon data used to create linked SVG `<image>` elements from `icons/`.
 
 ## Current Assembly Flow
 
@@ -16,11 +18,12 @@ This note documents `assemble.ps1`, the files it expects, and the path behavior 
    $svgXml = [xml](Get-Content -Path $baseSvgPath -Raw)
    ```
 
-2. Read `map.csv` with `Import-Csv`.
+2. Read `map_keys.csv`, `map_caps.csv`, and `map_icons.csv` with `Import-Csv`.
 3. For each row, create a new SVG `<text>` element.
 4. Set attributes such as `x`, `y`, `fill`, `stroke`, `font-size`, `font-family`, and `text-anchor`.
-5. Append the text node to the first `<g>` element in the SVG, or to the root `<svg>` element if no group exists.
-6. Save the reconstructed SVG.
+5. For each icon row, create a new SVG `<image>` element with `href`, `x`, `y`, `width`, and `height`.
+6. Append the generated nodes to the first `<g>` element in the SVG, or to the root `<svg>` element if no group exists.
+7. Save the reconstructed SVG.
 
 ## Important Path Issue
 
@@ -42,7 +45,11 @@ Use `$PSScriptRoot` for files that should be located relative to `assemble.ps1`,
 
 ```powershell
 $baseSvgPath = Join-Path $PSScriptRoot "base_svg.svg"
-$mapDataPath = Join-Path $PSScriptRoot "map.csv"
+$textMapPaths = @(
+    (Join-Path $PSScriptRoot "map_keys.csv"),
+    (Join-Path $PSScriptRoot "map_caps.csv")
+)
+$iconMapPath = Join-Path $PSScriptRoot "map_icons.csv"
 $outputSvgPath = Join-Path $PSScriptRoot "keyboard-map-tks.svg"
 
 $outputSvgPath = $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($outputSvgPath)
@@ -69,8 +76,9 @@ With the `$PSScriptRoot` pattern, both commands should read the same input files
 
 ## Things To Watch
 
-- `map.csv` is read with `Import-Csv`, so normal CSV quoting, empty columns, and line endings are handled by PowerShell.
-- The script requires these columns: `Text`, `X`, `Y`, `Fill`, `Stroke`, `FontSize`, `FontFamily`, and `TextAnchor`.
+- The CSV maps are read with `Import-Csv`, so normal CSV quoting, empty columns, and line endings are handled by PowerShell.
+- `map_keys.csv` and `map_caps.csv` require these columns: `Text`, `X`, `Y`, `Fill`, `Stroke`, `FontSize`, `FontFamily`, and `TextAnchor`.
+- `map_icons.csv` requires these columns: `Name`, `Href`, `X`, `Y`, `Width`, and `Height`.
 - The script appends labels to the first `<g>` element it finds. If the base SVG gains multiple groups, the output location may need to be made more specific.
 - SVG namespace handling is required. New elements should continue to be created with:
 

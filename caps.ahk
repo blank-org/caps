@@ -136,7 +136,8 @@ m::!right
 ;8
 ;9
 ;0
--::—
+-::–
++-::—
 ;=
 backspace::del
 ^backspace::^del
