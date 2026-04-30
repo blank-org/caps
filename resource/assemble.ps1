@@ -4,7 +4,7 @@
 
 .DESCRIPTION
     This script reads a 'base_svg.svg' file, text map CSV files, and an icon map CSV file.
-    It parses the CSV data to get the properties for each text label and icon image.
+    It parses the CSV data to get the properties for each text label and icon.
     Then, it programmatically creates new SVG elements and injects them into the
     base SVG's XML structure. The final, reconstructed SVG is saved as 'keyboard-map-tks.svg'.
 
@@ -97,6 +97,15 @@ try {
         return $iconName
     }
 
+    function Get-IconPath {
+        param(
+            [Parameter(Mandatory = $true)] [string] $IconName
+        )
+
+        $iconPath = Join-Path $PSScriptRoot "icons\$IconName.svg"
+        return $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($iconPath)
+    }
+
     $textEntries = @()
     $requiredTextColumns = @("Text", "X", "Y", "Fill", "Stroke", "FontSize", "FontFamily", "TextAnchor")
     foreach ($textMapPath in $textMapPaths) {
@@ -152,15 +161,24 @@ try {
         $iconName = Get-IconName -Value $entry.Name
         $iconFileName = Get-IconName -Value $entry.Icon
         $iconId = "icon-$iconName"
-        $iconHref = "icons/$iconFileName.svg"
 
-        $iconElement = $svgXml.CreateElement("image", $namespace)
+        $iconPath = Get-IconPath -IconName $iconFileName
+        if (-not (Test-Path $iconPath)) { throw "Icon SVG file not found at: $iconPath" }
+
+        $iconXml = [xml](Get-Content -Path $iconPath -Raw)
+        $iconElement = $svgXml.CreateElement("svg", $namespace)
         Set-AttributeIfPresent -Element $iconElement -Name "id" -Value $iconId
-        Set-AttributeIfPresent -Element $iconElement -Name "href" -Value $iconHref
         Set-AttributeIfPresent -Element $iconElement -Name "x" -Value $entry.X
         Set-AttributeIfPresent -Element $iconElement -Name "y" -Value $entry.Y
         Set-AttributeIfPresent -Element $iconElement -Name "width" -Value $entry.Width
         Set-AttributeIfPresent -Element $iconElement -Name "height" -Value $entry.Height
+        Set-AttributeIfPresent -Element $iconElement -Name "viewBox" -Value $iconXml.DocumentElement.GetAttribute("viewBox")
+
+        foreach ($childNode in $iconXml.DocumentElement.ChildNodes) {
+            $importedNode = $svgXml.ImportNode($childNode, $true)
+            [void]$iconElement.AppendChild($importedNode)
+        }
+
         [void]$parentElement.AppendChild($iconElement)
         $writtenIconCount++
     }

@@ -4,11 +4,11 @@ This note documents `assemble.ps1`, the files it expects, and the path behavior 
 
 ## Files
 
-- `assemble.ps1`: rebuilds the keyboard map SVG by loading a base SVG and injecting text labels from `map_keys.csv` and `map_caps.csv`, plus icon images from `map_icons.csv`.
+- `assemble.ps1`: rebuilds the keyboard map SVG by loading a base SVG and injecting text labels from `map_keys.csv` and `map_caps.csv`, plus inline icon SVG from `map_icons.csv`.
 - `base_svg.svg`: SVG structure used as the base document.
 - `map_keys.csv`: key label data used to create base `<text>` elements.
 - `map_caps.csv`: caps-layer label data used to create overlay `<text>` elements.
-- `map_icons.csv`: icon data used to create linked SVG `<image>` elements from `icons/`.
+- `map_icons.csv`: icon data used to embed SVG elements from `icons/`.
 
 ## Current Assembly Flow
 
@@ -21,7 +21,7 @@ This note documents `assemble.ps1`, the files it expects, and the path behavior 
 2. Read `map_keys.csv`, `map_caps.csv`, and `map_icons.csv` with `Import-Csv`.
 3. For each row, create a new SVG `<text>` element.
 4. Set attributes such as `x`, `y`, `fill`, `stroke`, `font-size`, `font-family`, and `text-anchor`.
-5. For each icon row, create a new SVG `<image>` element with `href`, `x`, `y`, `width`, and `height`.
+5. For each icon row, load the source icon SVG and create a nested inline `<svg>` element with `x`, `y`, `width`, `height`, `viewBox`, and copied child shapes.
 6. Append the generated nodes to the first `<g>` element in the SVG, or to the root `<svg>` element if no group exists.
 7. Save the reconstructed SVG.
 
@@ -78,7 +78,7 @@ With the `$PSScriptRoot` pattern, both commands should read the same input files
 
 - The CSV maps are read with `Import-Csv`, so normal CSV quoting, empty columns, and line endings are handled by PowerShell.
 - `map_keys.csv` and `map_caps.csv` require these columns: `Text`, `X`, `Y`, `Fill`, `Stroke`, `FontSize`, `FontFamily`, and `TextAnchor`.
-- `map_icons.csv` requires these columns: `Name`, `Href`, `X`, `Y`, `Width`, and `Height`.
+- `map_icons.csv` requires these columns: `Name`, `Icon`, `X`, `Y`, `Width`, and `Height`.
 - The script appends labels to the first `<g>` element it finds. If the base SVG gains multiple groups, the output location may need to be made more specific.
 - SVG namespace handling is required. New elements should continue to be created with:
 
