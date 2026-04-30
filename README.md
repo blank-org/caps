@@ -17,7 +17,6 @@ Double tap the <kbd>Caps</kbd> key for normal caps lock opeartion.
 
 In case if you ever need to disable `caps` functionality you may suspend the program from the notification area (`Caps Keyboard icon` > `Right Click` > `Suspend Hotkeys`)
 
-
 ## Shortcuts
 
 <p align="center">
@@ -92,29 +91,32 @@ In case if you ever need to disable `caps` functionality you may suspend the pro
 | 65     | <kbd>→</kbd>         |               | <kbd>+</kbd>                                      |                  |            |
 | 66     | <kbd>Menu</kbd>      |               | APP SHORTCUT menu                                 |                  |            |
 
-
 [ #53 - #61 : optimized for Ten Keyless (TKL) keyboards ]
 
 #### In combination with the <kbd>Alt</kbd> key
-| Serial | Key | Action |
-|--------|-----|--------|
-1|<kbd>`</kbd>|SWITCH WINDOW sameapp
+
+| Serial       | Key         | Action              |
+|--------------|-------------|---------------------|
+|1             |<kbd>`</kbd> |SWITCH WINDOW sameapp|
 
 #### Direct (without combination)
-| Serial | Key | Action |
-|--------|-----|--------|
-1|<kbd>Prtsc</kbd>|Volume Mute
-2|<kbd>Scrlk</kbd>|Volume Down
-3|<kbd>Pause</kbd>|Volume Up
+
+| Serial | Key              | Action      |
+|--------|------------------|-------------|
+|   1    | <kbd>Prtsc</kbd> | Volume Mute |
+|   2    | <kbd>Scrlk</kbd> | Volume Down |
+|   3    | <kbd>Pause</kbd> | Volume Up   |
 
 ## Config
+
 `right_click_left` : maps right click to left click
 
-## Supported platforms:
+## Supported platforms
+
 `Windows`
 
-
 ## Additional repo
+
 [github : FuPeiJiang/VD.ahk](https://github.com/FuPeiJiang/VD.ahk/tree/v2_port)
 Place in root
 
@@ -122,6 +124,6 @@ Place in root
 
 [Ujjwal Singh @ ujnotes.com](https://ujnotes.com/about_me)
 
+## Todo
 
-## Todo:
 MacOS support using likely: [hammerspoon](https://www.hammerspoon.org)
