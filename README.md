@@ -53,11 +53,11 @@ In case if you ever need to disable `caps` functionality you may suspend the pro
 | 26     | <kbd>Enter</kbd>     |               |                                                   |                  |            |
 | 27     | <kbd>Z</kbd>         |               | Turn off MONITOR                                  |                  |            |
 | 28     | <kbd>X</kbd>         |               | <kbd>Browser ←</kbd>                              |                  |            |
-| 29     | <kbd>C</kbd>         |               |                                                   |                  |            |
+| 29     | <kbd>C</kbd>         |               | <kbd>Alt</kbd> + <kbd>←</kbd>                     |                  |            |
 | 30     | <kbd>V</kbd>         |               | <kbd>Ctrl</kbd> + <kbd>←</kbd>                    |                  |            |
 | 31     | <kbd>B</kbd>         |               | paste type                                        | <kbd>space</kbd> | end wait   |
 | 32     | <kbd>N</kbd>         |               | <kbd>Ctrl</kbd> + <kbd>→</kbd>                    |                  |            |
-| 33     | <kbd>M</kbd>         |               |                                                   |                  |            |
+| 33     | <kbd>M</kbd>         |               | <kbd>Alt</kbd> + <kbd>→</kbd>                     |                  |            |
 | 34     | <kbd>,</kbd>         | <kbd><</kbd>  | <kbd>Browser →</kbd>                              |                  |            |
 | 35     | <kbd>.</kbd>         | <kbd>></kbd>  | Toggle DARK MODE                                  |                  |            |
 | 36     | <kbd>/</kbd>         | <kbd>?</kbd>  | Open Code editor                                  |                  |            |

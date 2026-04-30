@@ -94,11 +94,11 @@ l::^+right
 
 z::TurnOffMonitor()
 x::browser_back
-;c::
+c::!left
 v::^left
 b::PasteType()
 n::^right
-;m::
+m::!right
 ,::browser_forward
 .::ToggleDarkMode()
 /::Start_VScode()
@@ -115,7 +115,7 @@ n::^right
 ;8
 ;9
 ;0
-;-
+-::—
 ;=
 backspace::del
 ^backspace::^del
