@@ -8,11 +8,11 @@ $versionEnvPath = Join-Path $PSScriptRoot "build\version.env"
 $versionLine = Get-Content $versionEnvPath | Where-Object { $_ -match '^\s*FILE_VERSION\s*=\s*([\d\.]+)\s*$' } | Select-Object -First 1
 if ($versionLine -match '^\s*FILE_VERSION\s*=\s*([\d\.]+)\s*$') {
     $fullVersion = $Matches[1]
-    if ($fullVersion -match '^(\d+\.\d+\.\d+)') {
-        $version = $Matches[1]
+    if ($fullVersion -match '^\d+(?:\.\d+){2,3}$') {
+        $version = $fullVersion
     }
     else {
-        Write-Error "Failed to parse version (major.minor.patch) from $fullVersion"
+        Write-Error "Failed to parse version (major.minor.patch[.build]) from $fullVersion"
         exit 1
     }
 }
