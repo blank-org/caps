@@ -4,25 +4,31 @@
 
 #SingleInstance Force
 #InstallKeybdHook
+SetBatchLines, -1
 
-; Double-tap CapsLock detection
+; CapsLock layer state
+; capsLocked  — double-tapped, stays on until next CapsLock press
+; capsIsHeld  — key is physically down (filters spurious auto-repeat events)
+; capsActive  — layer is live (held OR locked); drives #If below, faster than GetKeyState
 doubleCapsLockInterval := 300
 lastCapsLockTime := 0
-capsOverrideDisabled := 0
+capsLocked := 0
 capsIsHeld := 0
+capsActive := 0
+
 Caps_ResetState()
 OnMessage(0x218, "Caps_PowerBroadcast")
 
 Caps_ResetState() {
-    global capsOverrideDisabled, lastCapsLockTime, capsIsHeld
-    capsOverrideDisabled := 0
+    global lastCapsLockTime, capsLocked, capsIsHeld, capsActive
     lastCapsLockTime := 0
+    capsLocked := 0
     capsIsHeld := 0
+    capsActive := 0
     SetCapsLockState, Off
 }
 
 Caps_PowerBroadcast(wParam, lParam, msg, hwnd) {
-    ; PBT_APMRESUMECRITICAL, PBT_APMRESUMESUSPEND, PBT_APMRESUMEAUTOMATIC
     if (wParam = 0x6 || wParam = 0x7 || wParam = 0x12) {
         Caps_ResetState()
         SetTimer, Caps_ReloadAfterResume, -1500
@@ -34,28 +40,31 @@ Caps_ReloadAfterResume() {
     Reload
 }
 
-~*CapsLock::
+; No ~ prefix: AHK owns CapsLock entirely via SetCapsLockState, no race with system toggle
+*CapsLock::
     if (capsIsHeld)
         return
     capsIsHeld := 1
-    now := A_TickCount
-    if (now - lastCapsLockTime < doubleCapsLockInterval) {
-        capsOverrideDisabled := 1
-        SetCapsLockState, On
+    if (capsLocked) {
+        capsLocked := 0
+        capsActive := 0
+        SetCapsLockState, Off
+        return
     }
+    now := A_TickCount
+    if (now - lastCapsLockTime < doubleCapsLockInterval)
+        capsLocked := 1
     lastCapsLockTime := now
+    capsActive := 1
+    SetCapsLockState, On
 return
 
 *CapsLock up::
     capsIsHeld := 0
-    if (capsOverrideDisabled) {
-        if (GetKeyState("CapsLock", "T") = 0) {
-            capsOverrideDisabled := 0
-        }
+    if (capsLocked)
         return
-    } else {
-        SetCapsLockState, off
-    }
+    capsActive := 0
+    SetCapsLockState, Off
 return
 
 ; Read config.ini to check if right_click_left is enabled
@@ -79,7 +88,7 @@ pause::volume_up
 scrollLock::volume_down
 printScreen::volume_mute
 
-#If GetKeyState("Capslock","T") && !capsOverrideDisabled
+#If capsActive
 
 AppSKey::StartRun()
 
