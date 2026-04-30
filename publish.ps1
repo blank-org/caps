@@ -1,3 +1,6 @@
+Set-StrictMode -Version Latest
+$ErrorActionPreference = "Stop"
+
 $githubToken = $env:GITHUB_TOKEN_BLANK
 if (-not $githubToken) {
     Write-Error "GITHUB_TOKEN environment variable not set."
@@ -22,30 +25,78 @@ else {
 }
 
 $zipName = "caps-$version.zip"
-$archiveDir = "archive"
+$zipPath = Join-Path $PSScriptRoot $zipName
+$tagName = "v$version"
+
+git rev-parse --verify --quiet "refs/tags/$tagName" | Out-Null
+if ($LASTEXITCODE -eq 0) {
+    Write-Error "Tag $tagName already exists locally. Bump FILE_VERSION in $versionEnvPath before publishing."
+    exit 1
+}
+
+$remoteTag = git ls-remote --exit-code --tags origin "refs/tags/$tagName" 2>$null
+if ($LASTEXITCODE -eq 0 -or $remoteTag) {
+    Write-Error "Tag $tagName already exists on origin. Bump FILE_VERSION in $versionEnvPath before publishing."
+    exit 1
+}
+elseif ($LASTEXITCODE -ne 2) {
+    Write-Error "Unable to check whether tag $tagName exists on origin."
+    exit 1
+}
+
+$archiveDir = Join-Path $PSScriptRoot "archive"
 if (!(Test-Path $archiveDir)) {
     New-Item -ItemType Directory -Path $archiveDir | Out-Null
 }
 
 # Move earlier zip files to archive dir if exist
-Get-ChildItem -Path . -Filter *.zip | ForEach-Object {
+Get-ChildItem -Path $PSScriptRoot -Filter *.zip | ForEach-Object {
     Move-Item $_.FullName "$archiveDir\$($_.Name)" -Force
 }
 
-& "$PSScriptRoot\make.ps1"
+$exePath = Join-Path $PSScriptRoot "caps.exe"
+if (-not (Test-Path -LiteralPath $exePath -PathType Leaf)) {
+    & "$PSScriptRoot\make.ps1"
+    if ($LASTEXITCODE -ne 0) {
+        exit $LASTEXITCODE
+    }
+}
 
-Compress-Archive -LiteralPath caps.exe, CREDITS.md, LICENSE, README.md, Install.md, config.ini, Resource/Keyboard-map-TKS.svg -DestinationPath $zipName
+$releaseFiles = @(
+    $exePath
+    (Join-Path $PSScriptRoot "CREDITS.md")
+    (Join-Path $PSScriptRoot "LICENSE")
+    (Join-Path $PSScriptRoot "README.md")
+    (Join-Path $PSScriptRoot "Install.md")
+    (Join-Path $PSScriptRoot "config.ini")
+    (Join-Path $PSScriptRoot "Resource\Keyboard-map-TKS.svg")
+)
+
+$missingFiles = $releaseFiles | Where-Object { -not (Test-Path -LiteralPath $_ -PathType Leaf) }
+if ($missingFiles) {
+    Write-Error "Cannot create $zipName because required release file(s) are missing: $($missingFiles -join ', ')"
+    exit 1
+}
+
+Compress-Archive -LiteralPath $releaseFiles -DestinationPath $zipPath
 
 # tag with version, then create a release and upload the zip
-git tag -a "v$version" -m "Release version $version"
-git push origin "v$version"
+git tag -a $tagName -m "Release version $version"
+if ($LASTEXITCODE -ne 0) {
+    exit $LASTEXITCODE
+}
+
+git push origin $tagName
+if ($LASTEXITCODE -ne 0) {
+    exit $LASTEXITCODE
+}
 
 # Create a GitHub release
 
 $releaseUrl = "https://api.github.com/repos/blank-org/caps/releases"
 $releaseBody = @{
-    tag_name    = "v$version"
-    name        = "Release v$version"
+    tag_name    = $tagName
+    name        = "Release $tagName"
     body        = "Release of Caps version $version"
     draft       = $false
     prerelease  = $false
@@ -65,4 +116,4 @@ Invoke-RestMethod -Uri $uploadUrl -Method Post -Headers @{
     Authorization = "token $githubToken"
     "User-Agent"  = "PowerShell"
     "Content-Type" = "application/zip"
-} -InFile $zipName
+} -InFile $zipPath
