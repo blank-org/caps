@@ -8,14 +8,20 @@ if (-not $githubToken) {
 }
 
 $versionEnvPath = Join-Path $PSScriptRoot "build\version.env"
-$versionLine = Get-Content $versionEnvPath | Where-Object { $_ -match '^\s*FILE_VERSION\s*=\s*([\d\.]+)\s*$' } | Select-Object -First 1
-if ($versionLine -match '^\s*FILE_VERSION\s*=\s*([\d\.]+)\s*$') {
-    $fullVersion = $Matches[1]
-    if ($fullVersion -match '^\d+(?:\.\d+){2,3}$') {
-        $version = $fullVersion
+$version = @{}
+Get-Content $versionEnvPath | ForEach-Object {
+    if ($_ -match '^\s*([^#=]+?)\s*=\s*(.*?)\s*$') {
+        $version[$Matches[1]] = $Matches[2]
+    }
+}
+
+$fileVersion = $version["FILE_VERSION"]
+if ($fileVersion) {
+    if ($fileVersion -match '^\d+(?:\.\d+){2,3}(?:-[0-9A-Za-z.-]+)?(?:\+[0-9A-Za-z.-]+)?$') {
+        $version = $fileVersion
     }
     else {
-        Write-Error "Failed to parse version (major.minor.patch[.build]) from $fullVersion"
+        Write-Error "Failed to parse version (major.minor.patch[.build][-prerelease][+metadata]) from $fileVersion"
         exit 1
     }
 }
