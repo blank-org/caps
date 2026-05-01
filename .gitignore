@@ -4,3 +4,5 @@ VD.ahk-class_VD/
 
 *.zip
 *.exe
+
+build/version-info.ahk
