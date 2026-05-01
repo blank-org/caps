@@ -115,15 +115,15 @@ In case if you ever need to disable `caps` functionality you may suspend the pro
 
 `Windows`
 
-## Additional repo
+## Additional repo depedency
 
 [github : FuPeiJiang/VD.ahk](https://github.com/FuPeiJiang/VD.ahk/tree/v2_port)
 Place in root
 
 ## Author
 
-[Ujjwal Singh @ ujnotes.com](https://ujnotes.com/about_me)
+[Ujjwal Singh — avyaan.tech](https://avyaan.tech)
 
 ## Todo
 
-MacOS support using likely: [hammerspoon](https://www.hammerspoon.org)
+MacOS support likely using: [hammerspoon](https://www.hammerspoon.org)
