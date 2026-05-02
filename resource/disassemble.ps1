@@ -7,12 +7,20 @@
     'map_keys_reversed.csv', 'map_caps_reversed.csv', and 'map_icons_reversed.csv'.
     The output schema matches the CSV files consumed by 'assemble.ps1'.
 
+.PARAMETER NoBackup
+    Overwrites existing output CSV files without first renaming them to backup files.
+
 .NOTES
     - This script requires 'keyboard-map-tks.svg' to be present in the same directory.
     - Running this script will rename existing output CSV files to '*.bkp.csv' before
-      writing new map files.
+      writing new map files, unless -NoBackup is specified. If a backup file already
+      exists, a numeric suffix is added and incremented.
     - If 'map_keys.csv' exists, its row count is used to split key labels from caps labels.
 #>
+
+param(
+    [switch] $NoBackup
+)
 
 # --- Configuration ---
 $sourceSvgPath = Join-Path $PSScriptRoot "keyboard-map-tks.svg"
@@ -82,7 +90,28 @@ try {
 
         $directory = [System.IO.Path]::GetDirectoryName($Path)
         $fileNameWithoutExtension = [System.IO.Path]::GetFileNameWithoutExtension($Path)
-        Join-Path $directory "$fileNameWithoutExtension.bkp.csv"
+        $backupPattern = [regex]::Escape($fileNameWithoutExtension) + '\.bkp(?<Number>\d*)\.csv$'
+        $highestBackupNumber = -1
+        Get-ChildItem -LiteralPath $directory -File -Filter "$fileNameWithoutExtension.bkp*.csv" |
+            ForEach-Object {
+                $match = [regex]::Match($_.Name, $backupPattern)
+                if ($match.Success) {
+                    $backupNumber = 0
+                    if (-not [string]::IsNullOrEmpty($match.Groups["Number"].Value)) {
+                        $backupNumber = [int] $match.Groups["Number"].Value
+                    }
+                    if ($backupNumber -gt $highestBackupNumber) {
+                        $highestBackupNumber = $backupNumber
+                    }
+                }
+            }
+
+        if ($highestBackupNumber -lt 0) {
+            return (Join-Path $directory "$fileNameWithoutExtension.bkp.csv")
+        }
+
+        $nextBackupNumber = $highestBackupNumber + 1
+        Join-Path $directory "$fileNameWithoutExtension.bkp$nextBackupNumber.csv"
     }
 
     function Backup-ExistingCsvFiles {
@@ -160,7 +189,12 @@ try {
     $textColumns = @("Text", "X", "Y", "Fill", "Stroke", "FontSize", "FontFamily", "TextAnchor")
     $iconColumns = @("Name", "Icon", "X", "Y", "Width", "Height")
 
-    Backup-ExistingCsvFiles -Paths @($keyMapOutputPath, $capsMapOutputPath, $iconMapOutputPath)
+    if ($NoBackup) {
+        Write-Host "Skipping backup of existing CSV files because -NoBackup was specified."
+    }
+    else {
+        Backup-ExistingCsvFiles -Paths @($keyMapOutputPath, $capsMapOutputPath, $iconMapOutputPath)
+    }
 
     Write-CsvRows -Path $keyMapOutputPath -Columns $textColumns -Rows $keyRows
     Write-Host "Successfully created key map data file: $keyMapOutputPath"
