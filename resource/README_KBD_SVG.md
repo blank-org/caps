@@ -8,7 +8,7 @@ This note documents `assemble.ps1`, the files it expects, and the path behavior 
 - `base_svg.svg`: SVG structure used as the base document.
 - `map_keys.csv`: key label data used to create base `<text>` elements.
 - `map_caps.csv`: caps-layer label data used to create overlay `<text>` elements.
-- `map_icons.csv`: icon data used to embed SVG elements from `icons/`.
+- `map_icons.csv`: icon data used to embed SVG elements from `kbd-icons/`.
 
 ## Current Assembly Flow
 

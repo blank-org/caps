@@ -21,6 +21,7 @@ $textMapPaths = @(
     (Join-Path $PSScriptRoot "map_caps.csv")
 )
 $iconMapPath = Join-Path $PSScriptRoot "map_icons.csv"
+$iconDirectoryPath = Join-Path $PSScriptRoot "kbd-icons"
 $outputSvgPath = Join-Path $PSScriptRoot "keyboard-map-tks.svg"
 
 # --- Main Logic ---
@@ -31,6 +32,7 @@ try {
         $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($_)
     })
     $iconMapPath = $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($iconMapPath)
+    $iconDirectoryPath = $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($iconDirectoryPath)
     $outputSvgPath = $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($outputSvgPath)
 
     # Check if the required input files exist
@@ -87,7 +89,10 @@ try {
         )
 
         $iconName = $Value.Trim() -replace '\\', '/'
-        if ($iconName.StartsWith("icons/")) {
+        if ($iconName.StartsWith("kbd-icons/")) {
+            $iconName = $iconName.Substring("kbd-icons/".Length)
+        }
+        elseif ($iconName.StartsWith("icons/")) {
             $iconName = $iconName.Substring("icons/".Length)
         }
         if ($iconName.EndsWith(".svg")) {
@@ -102,7 +107,7 @@ try {
             [Parameter(Mandatory = $true)] [string] $IconName
         )
 
-        $iconPath = Join-Path $PSScriptRoot "icons\$IconName.svg"
+        $iconPath = Join-Path $iconDirectoryPath "$IconName.svg"
         return $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($iconPath)
     }
 
@@ -184,7 +189,17 @@ try {
     }
 
     # Save the fully reconstructed XML object to the final SVG file
-    $svgXml.Save($outputSvgPath)
+    $xmlWriterSettings = [System.Xml.XmlWriterSettings]::new()
+    $xmlWriterSettings.Indent = $true
+    $xmlWriterSettings.OmitXmlDeclaration = $true
+    $xmlWriter = [System.Xml.XmlWriter]::Create($outputSvgPath, $xmlWriterSettings)
+    try {
+        $svgXml.Save($xmlWriter)
+    }
+    finally {
+        $xmlWriter.Dispose()
+    }
+
     Write-Host "Successfully assembled the full SVG with $writtenTextCount text entries and $writtenIconCount icon entries: $outputSvgPath"
 
 }
