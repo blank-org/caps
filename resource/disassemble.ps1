@@ -10,6 +10,9 @@
 .PARAMETER NoBackup
     Overwrites existing output CSV files without first renaming them to backup files.
 
+.PARAMETER FileName
+    Source SVG file name or path. Relative paths are resolved from this script's directory.
+
 .NOTES
     - This script requires 'keyboard-map-tks.svg' to be present in the same directory.
     - Running this script will rename existing output CSV files to '*.bkp.csv' before
@@ -19,11 +22,17 @@
 #>
 
 param(
+    [string] $FileName = "keyboard-map-tks.svg",
     [switch] $NoBackup
 )
 
 # --- Configuration ---
-$sourceSvgPath = Join-Path $PSScriptRoot "keyboard-map-tks.svg"
+if ([System.IO.Path]::IsPathRooted($FileName)) {
+    $sourceSvgPath = $FileName
+}
+else {
+    $sourceSvgPath = Join-Path $PSScriptRoot $FileName
+}
 $keyMapPath = Join-Path $PSScriptRoot "map_keys.csv"
 $keyMapOutputPath = Join-Path $PSScriptRoot "map_keys.csv"
 $capsMapOutputPath = Join-Path $PSScriptRoot "map_caps.csv"
@@ -83,6 +92,50 @@ try {
         [System.IO.File]::WriteAllText($Path, $content, $utf8NoBom)
     }
 
+    function Get-SvgStyleProperty {
+        param(
+            [Parameter(Mandatory = $true)] [System.Xml.XmlElement] $Node,
+            [Parameter(Mandatory = $true)] [string] $Name
+        )
+
+        $style = $Node.GetAttribute("style")
+        if ([string]::IsNullOrWhiteSpace($style)) {
+            return ""
+        }
+
+        foreach ($declaration in $style -split ";") {
+            $parts = $declaration -split ":", 2
+            if ($parts.Count -eq 2 -and $parts[0].Trim() -eq $Name) {
+                return $parts[1].Trim()
+            }
+        }
+
+        return ""
+    }
+
+    function Get-InheritedSvgAttribute {
+        param(
+            [Parameter(Mandatory = $true)] [System.Xml.XmlElement] $Node,
+            [Parameter(Mandatory = $true)] [string] $Name
+        )
+
+        $currentNode = $Node
+        while ($null -ne $currentNode -and $currentNode.NodeType -eq [System.Xml.XmlNodeType]::Element) {
+            $styleValue = Get-SvgStyleProperty -Node $currentNode -Name $Name
+            if (-not [string]::IsNullOrEmpty($styleValue)) {
+                return $styleValue
+            }
+
+            if ($currentNode.HasAttribute($Name)) {
+                return $currentNode.GetAttribute($Name)
+            }
+
+            $currentNode = $currentNode.ParentNode
+        }
+
+        return ""
+    }
+
     function Get-BackupCsvPath {
         param(
             [Parameter(Mandatory = $true)] [string] $Path
@@ -137,11 +190,11 @@ try {
             Text       = $Node.InnerText
             X          = $Node.GetAttribute("x")
             Y          = $Node.GetAttribute("y")
-            Fill       = $Node.GetAttribute("fill")
-            Stroke     = $Node.GetAttribute("stroke")
-            FontSize   = $Node.GetAttribute("font-size")
-            FontFamily = $Node.GetAttribute("font-family")
-            TextAnchor = $Node.GetAttribute("text-anchor")
+            Fill       = Get-InheritedSvgAttribute -Node $Node -Name "fill"
+            Stroke     = Get-InheritedSvgAttribute -Node $Node -Name "stroke"
+            FontSize   = Get-InheritedSvgAttribute -Node $Node -Name "font-size"
+            FontFamily = Get-InheritedSvgAttribute -Node $Node -Name "font-family"
+            TextAnchor = Get-InheritedSvgAttribute -Node $Node -Name "text-anchor"
         }
     }
 
@@ -173,7 +226,7 @@ try {
         $keyCount = @(Import-Csv -Path $keyMapPath).Count
     }
     else {
-        $keyCount = @($textNodes | Where-Object { $_.GetAttribute("fill") -eq "#999999" }).Count
+        $keyCount = @($textNodes | Where-Object { (Get-InheritedSvgAttribute -Node $_ -Name "fill") -eq "#999999" }).Count
         Write-Warning "map_keys.csv not found. Splitting text rows by the count of #999999 labels."
     }
 
