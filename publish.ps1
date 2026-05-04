@@ -61,11 +61,35 @@ Get-ChildItem -Path $PSScriptRoot -Filter *.zip | ForEach-Object {
 }
 
 $exePath = Join-Path $PSScriptRoot "caps.exe"
-if (-not (Test-Path -LiteralPath $exePath -PathType Leaf)) {
-    & "$PSScriptRoot\make.ps1"
-    if ($LASTEXITCODE -ne 0) {
-        exit $LASTEXITCODE
+if (Test-Path -LiteralPath $exePath -PathType Leaf) {
+    Add-Type -AssemblyName Microsoft.VisualBasic
+
+    do {
+        try {
+            [Microsoft.VisualBasic.FileIO.FileSystem]::DeleteFile(
+                $exePath,
+                [Microsoft.VisualBasic.FileIO.UIOption]::OnlyErrorDialogs,
+                [Microsoft.VisualBasic.FileIO.RecycleOption]::SendToRecycleBin
+            )
+
+            while (Test-Path -LiteralPath $exePath -PathType Leaf) {
+                Start-Sleep -Milliseconds 250
+            }
+        }
+        catch {
+            Write-Error "Failed to move $exePath to the Recycle Bin: $($_.Exception.Message)" -ErrorAction Continue
+            $retryDelete = Read-Host "Close anything using caps.exe, then retry deleting it? [y/N]"
+            if ($retryDelete -notmatch '(?i)^(?:y|yes)$') {
+                exit 1
+            }
+        }
     }
+    while (Test-Path -LiteralPath $exePath -PathType Leaf)
+}
+
+& "$PSScriptRoot\make.ps1"
+if ($LASTEXITCODE -ne 0) {
+    exit $LASTEXITCODE
 }
 
 $releaseFiles = @(
