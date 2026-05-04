@@ -48,7 +48,7 @@ In case if you ever need to disable `caps` functionality you may suspend the pro
 | 22     | <kbd>K</kbd>         |               | <kbd>↓</kbd>                                      |                  |            |
 | 23     | <kbd>L</kbd>         |               | <kbd>→</kbd>                                      |                  |            |
 | 24     | <kbd>;</kbd>         | <kbd>:</kbd>  | <kbd>Volume Mute</kbd>                            |                  |            |
-| 25     | <kbd>'</kbd>         | <kbd>"</kbd>  |                                                   |                  |            |
+| 25     | <kbd>'</kbd>         | <kbd>"</kbd>  | Open Notepad                                      |                  |            |
 | 26     | <kbd>Enter</kbd>     |               |                                                   |                  |            |
 | 27     | <kbd>Z</kbd>         |               | Turn off MONITOR                                  |                  |            |
 | 28     | <kbd>X</kbd>         |               | <kbd>Browser ←</kbd>                              |                  |            |

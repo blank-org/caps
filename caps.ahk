@@ -82,6 +82,7 @@ rightClickLeft := (rightClickLeft = "1" || rightClickLeft = "true") ? 1 : 0
 #include sleep_out.ahk
 #include turn_off_monitor.ahk
 #include start_vscode.ahk
+#include start_notepad.ahk
 
 
 pause::volume_up
@@ -116,7 +117,7 @@ j::left
 k::down
 l::right
 `;::volume_mute
-;apostrophe
+SC028::StartNotepad()
 ;enter
 
 z::TurnOffMonitor()
