@@ -163,18 +163,18 @@
       <text x="126.6815" y="157.85286" fill="#008000" font-size="9.382px" font-family="Abel" text-anchor="middle">mon</text>
       <text x="227.51042" y="89.803528" fill="#e26868" stroke="#e26868" font-size="9.382px" font-family="Abel">end</text>
       <text x="257.76917" y="89.819031" fill="#e26868" stroke="#e26868" font-size="9.382px" font-family="Abel">home</text>
-      <text x="130.83371" y="87.934166" fill="#e26868" stroke="#e26868" font-size="9.382px" font-family="Abel">↑</text>
-      <text x="139.19321" y="119.88393" fill="#e26868" stroke="#e26868" font-size="9.382px" font-family="Abel">↓</text>
-      <text x="103.28179" y="122.56843" fill="#e26868" stroke="#e26868" font-size="9.382px" font-family="Abel">←</text>
-      <text x="170.49721" y="122.56843" fill="#e26868" stroke="#e26868" font-size="9.382px" font-family="Abel">→</text>
+      <text x="130.83371" y="87.934166" fill="#e26868" stroke="#e26868" font-size="9.382px" font-family="Abel">sft↑</text>
+      <text x="139.19321" y="119.88393" fill="#e26868" stroke="#e26868" font-size="9.382px" font-family="Abel">sft↓</text>
+      <text x="103.28179" y="122.56843" fill="#e26868" stroke="#e26868" font-size="9.382px" font-family="Abel">cs←</text>
+      <text x="170.49721" y="122.56843" fill="#e26868" stroke="#e26868" font-size="9.382px" font-family="Abel">cs→</text>
       <text x="161.34128" y="89.803528" fill="#e26868" stroke="#e26868" font-size="9.382px" font-family="Abel">ins</text>
       <text x="191.81075" y="89.803528" fill="#e26868" stroke="#e26868" font-size="9.382px" font-family="Abel">pgdn</text>
       <text x="292.53024" y="88.013641" fill="#e26868" stroke="#e26868" font-size="9.382px" font-family="Abel">pgup</text>
       <text x="359.12955" y="89.803528" fill="#e26868" stroke="#e26868" font-size="9.382px" font-family="Abel">voldn</text>
       <text x="426.27957" y="89.780128" fill="#e26868" stroke="#e26868" font-size="9.382px" font-family="Abel">volup</text>
-      <text x="367.50821" y="121.75758" fill="#e26868" stroke="#e26868" font-size="9.382px" font-family="Abel">cs→</text>
-      <text x="327.22394" y="89.803528" fill="#e26868" stroke="#e26868" font-size="9.382px" font-family="Abel">sft↑</text>
-      <text x="300.34824" y="121.75758" fill="#e26868" stroke="#e26868" font-size="9.382px" font-family="Abel">cs←</text>
+      <text x="367.50821" y="121.75758" fill="#e26868" stroke="#e26868" font-size="9.382px" font-family="Abel">→</text>
+      <text x="327.22394" y="89.803528" fill="#e26868" stroke="#e26868" font-size="9.382px" font-family="Abel">↑</text>
+      <text x="300.34824" y="121.75758" fill="#e26868" stroke="#e26868" font-size="9.382px" font-family="Abel">←</text>
       <text x="269.0527" y="121.79887" fill="#e26868" stroke="#e26868" font-size="9.382px" font-family="Abel">mrb</text>
       <text x="235.78651" y="121.75758" fill="#e26868" stroke="#e26868" font-size="9.382px" font-family="Abel">mlb</text>
       <text x="199.92879" y="121.75758" fill="#e26868" stroke="#e26868" font-size="9.382px" font-family="Abel">mmb</text>
@@ -204,7 +204,7 @@
       <text x="567.29749" y="190.41005" fill="#e26868" stroke="#e26868" font-size="9.382px" font-family="Abel">-</text>
       <text x="632.89038" y="190.45381" fill="#e26868" stroke="#e26868" font-size="9.382px" font-family="Abel">+</text>
       <text x="491.78284" y="55.3423" fill="#e26868" stroke="#e26868" font-size="9.382px" font-family="Abel">del</text>
-      <text x="336.52722" y="122.3492" fill="#e26868" stroke="#e26868" font-size="9.382px" font-family="Abel">sft↓</text>
+      <text x="336.52722" y="122.3492" fill="#e26868" stroke="#e26868" font-size="9.382px" font-family="Abel">↓</text>
       <text x="400.9418" y="122.3492" fill="#e26868" stroke="#e26868" font-size="9.382px" font-family="Abel">mute</text>
       <text x="253.43192" y="157.89023" fill="#008000" font-size="9.382px" font-family="Abel">type</text>
       <text x="387.36627" y="157.90254" fill="#008000" font-size="9.382px" font-family="Abel">dark</text>

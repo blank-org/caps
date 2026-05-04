@@ -3,7 +3,7 @@
 Caps - AHK
 
 Helps you navigate and edit text faster on a physical keyboard with shortcuts like: <kbd>Caps</kbd> + <kbd>Y</kbd> : <kbd>Home</kbd> - i.e. cursor to beginning of the line.
-Also <kbd>W</kbd><kbd>S</kbd><kbd>A</kbd><kbd>D</kbd> to <kbd>↑</kbd><kbd>↓</kbd><kbd>←</kbd><kbd>→</kbd> direction keys.
+Also <kbd>I</kbd><kbd>K</kbd><kbd>J</kbd><kbd>L</kbd> to <kbd>↑</kbd><kbd>↓</kbd><kbd>←</kbd><kbd>→</kbd> direction keys.
 
 The main goal is to Not have to lift the hands from their default type resting position - i.e. index fingers on the <kbd>F</kbd> & <kbd>J</kbd> keys.
 
@@ -26,27 +26,27 @@ In case if you ever need to disable `caps` functionality you may suspend the pro
 | Serial | Key                  | Shift         | Primary                                           | Modifier         | Secondary  |
 | ------ | -------------------- | ------------  | ------------------------------------------------- | ---------------- | ---------- |
 | 1      | <kbd>Q</kbd>         |               | SLEEP                                             |                  |            |
-| 2      | <kbd>W</kbd>         |               | <kbd>↑</kbd>                                      |                  |            |
+| 2      | <kbd>W</kbd>         |               | <kbd>Shift</kbd> + <kbd>↑</kbd>                   |                  |            |
 | 3      | <kbd>E</kbd>         |               | <kbd>Insert</kbd>                                 |                  |            |
 | 4      | <kbd>R</kbd>         |               | <kbd>Page Down</kbd>                              |                  |            |
 | 5      | <kbd>T</kbd>         |               | <kbd>Home</kbd>                                   |                  |            |
 | 6      | <kbd>Y</kbd>         |               | <kbd>End</kbd>                                    |                  |            |
 | 7      | <kbd>U</kbd>         |               | <kbd>Page Up</kbd>                                |                  |            |
-| 8      | <kbd>I</kbd>         |               | <kbd>Shift</kbd> + <kbd>↑</kbd>                   |                  |            |
+| 8      | <kbd>I</kbd>         |               | <kbd>↑</kbd>                                      |                  |            |
 | 9      | <kbd>O</kbd>         |               | Volume Down                                       |                  |            |
 | 10     | <kbd>P</kbd>         |               | <kbd>⏯️</kbd>                                     |                  |            |
 | 11     | <kbd>[</kbd>         | <kbd>{</kbd>  | Volume Up                                         |                  |            |
 | 12     | <kbd>]</kbd>         | <kbd>}</kbd>  | ⏮️                                                |                  |            |
 | 13     | <kbd>\\</kbd>        | <kbd>\|</kbd> | ⏭️                                                |                  |            |
-| 14     | <kbd>A</kbd>         |               | <kbd>←</kbd>                                      |                  |            |
-| 15     | <kbd>S</kbd>         |               | <kbd>↓</kbd>                                      |                  |            |
-| 16     | <kbd>D</kbd>         |               | <kbd>→</kbd>                                      |                  |            |
+| 14     | <kbd>A</kbd>         |               | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>←</kbd> |                  |            |
+| 15     | <kbd>S</kbd>         |               | <kbd>Shift</kbd> + <kbd>↓</kbd>                   |                  |            |
+| 16     | <kbd>D</kbd>         |               | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>→</kbd> |                  |            |
 | 17     | <kbd>F</kbd>         |               | <kbd>Mouse Middle button</kbd>                    |                  |            |
 | 18     | <kbd>G</kbd>         |               | <kbd>Mouse Left button</kbd>                      |                  |            |
 | 19     | <kbd>H</kbd>         |               | <kbd>Mouse Right button</kbd>                     |                  |            |
-| 20     | <kbd>J</kbd>         |               | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>←</kbd> |                  |            |
-| 22     | <kbd>K</kbd>         |               | <kbd>Shift</kbd> + <kbd>↓</kbd>                   |                  |            |
-| 23     | <kbd>L</kbd>         |               | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>→</kbd> |                  |            |
+| 20     | <kbd>J</kbd>         |               | <kbd>←</kbd>                                      |                  |            |
+| 22     | <kbd>K</kbd>         |               | <kbd>↓</kbd>                                      |                  |            |
+| 23     | <kbd>L</kbd>         |               | <kbd>→</kbd>                                      |                  |            |
 | 24     | <kbd>;</kbd>         | <kbd>:</kbd>  | <kbd>Volume Mute</kbd>                            |                  |            |
 | 25     | <kbd>'</kbd>         | <kbd>"</kbd>  |                                                   |                  |            |
 | 26     | <kbd>Enter</kbd>     |               |                                                   |                  |            |

@@ -93,28 +93,28 @@ printScreen::volume_mute
 AppSKey::StartRun()
 
 q::SleepOut()
-w::up
+w::+up
 e::ins
 r::pgdn
 t::home
 y::end
 u::pgup
-i::+up
+i::up
 o::volume_down
 p::media_play_pause
 [::volume_up
 ]::media_prev
 \::media_next
 
-a::left
-s::down
-d::right
+a::^+left
+s::+down
+d::^+right
 f::mbutton
 g::lbutton
 h::rbutton
-j::^+left
-k::+down
-l::^+right
+j::left
+k::down
+l::right
 `;::volume_mute
 ;apostrophe
 ;enter
