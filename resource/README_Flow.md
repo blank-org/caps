@@ -12,8 +12,8 @@ The normal workflow is:
 ## Files
 
 - `base_svg.svg`: base keyboard SVG structure.
-- `keyboard-map-tks_graphic.svg`: graphic SVG edited in Inkscape to correct key positions and styles.
-- `keyboard-map-tks_straightned.svg`: optimized/straightened SVG input used for disassembly.
+- `keyboard-map-tks_guide.svg`: Inkscape SVG with guides to correct key positions and styles.
+- `keyboard-map-tks_corrected.svg`: optimized/straightened SVG input used for disassembly.
 - `keyboard-map-tks.svg`: final assembled output SVG.
 - `kbd-icons/`: source SVG icons embedded by `assemble.ps1`.
 - `map_keys.csv`: base key label positions and styles.
@@ -24,12 +24,12 @@ The normal workflow is:
 
 ## Edit In Inkscape
 
-Open `keyboard-map-tks_graphic.svg` in Inkscape and adjust the key labels, icon positions, colors, font sizes, anchors, or other visual details.
+Open `keyboard-map-tks_guide.svg` in Inkscape, import current `keyboard-map-tks.svg` : 'include' > position x:0:y and adjust the key labels, icon positions, colors, font sizes, anchors, or other visual details.
 
 When exporting/saving the SVG for script input, use the optimized SVG form:
 
 ```text
-keyboard-map-tks_optimized.svg
+keyboard-map-tks_corrected.svg
 ```
 
 The disassembler supports styles that are applied directly to `<text>` nodes and styles inherited from parent `<g>` elements, which is common after SVG cleanup/optimization.
@@ -37,7 +37,7 @@ The disassembler supports styles that are applied directly to `<text>` nodes and
 ## Disassemble SVG To CSV
 
 ```powershell
-.\resource\disassemble.ps1 -FileName keyboard-map-tks_optimized.svg -NoBackup
+.\resource\disassemble.ps1 -FileName keyboard-map-tks_corrected.svg -NoBackup
 ```
 
 This updates:
