@@ -73,7 +73,7 @@ In case if you ever need to disable `caps` functionality you may suspend the pro
 | 47     | <kbd>9</kbd>         | <kbd>(</kbd>  |                                                   |                  |            |
 | 48     | <kbd>0</kbd>         | <kbd>)</kbd>  |                                                   |                  |            |
 | 49     | <kbd>-</kbd>         | <kbd>_</kbd>  | <kbd>—</kbd>                                      |                  |            |
-| 50     | <kbd>=</kbd>         | <kbd>+</kbd>  |                                                   |                  |            |
+| 50     | <kbd>=</kbd>         | <kbd>+</kbd>  | Open keyboard map                                 |                  |            |
 | 51     | <kbd>Backspace</kbd> | <kbd>Delete</kbd> |                                               | <kbd>Ctrl</kbd>  | whole word |
 | 52     | <kbd>Space</kbd>     |               | TERMINAL : active path                            |                  |            |
 | 53     | <kbd>Prtsc</kbd>     |               | <kbd>7</kbd>                                      |                  |            |

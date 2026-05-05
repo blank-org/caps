@@ -84,6 +84,14 @@ rightClickLeft := (rightClickLeft = "1" || rightClickLeft = "true") ? 1 : 0
 #include start_vscode.ahk
 #include start_notepad.ahk
 
+OpenKeyboardMap() {
+    keymapPath := A_ScriptDir . "\keyboard-map-tks.svg"
+    if FileExist(keymapPath) {
+        Run, %keymapPath%
+        return
+    }
+    MsgBox, 48, Caps, Keyboard map not found:`n%keymapPath%
+}
 
 pause::volume_up
 scrollLock::volume_down
@@ -145,7 +153,7 @@ m::!right
 ;0
 -::–
 +-::—
-;=
+=::OpenKeyboardMap()
 backspace::del
 ^backspace::^del
 

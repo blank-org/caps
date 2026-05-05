@@ -99,7 +99,7 @@ $releaseFiles = @(
     (Join-Path $PSScriptRoot "README.md")
     (Join-Path $PSScriptRoot "Install.md")
     (Join-Path $PSScriptRoot "config.ini")
-    (Join-Path $PSScriptRoot "Resource\Keyboard-map-TKS.svg")
+    (Join-Path $PSScriptRoot "keyboard-map-tks.svg")
 )
 
 $missingFiles = $releaseFiles | Where-Object { -not (Test-Path -LiteralPath $_ -PathType Leaf) }

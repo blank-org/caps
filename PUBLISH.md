@@ -21,5 +21,5 @@
 3. Package :
 
 ```ps
-Compress-Archive -LiteralPath caps.exe,CREDITS.md,LICENSE,README.md,Install.md,config.ini,Resource/Keyboard-map-TKS.svg -DestinationPath Caps-<version>.zip
+Compress-Archive -LiteralPath caps.exe,CREDITS.md,LICENSE,README.md,Install.md,config.ini,keyboard-map-tks.svg -DestinationPath Caps-<version>.zip
 ```
