@@ -22,7 +22,7 @@ $textMapPaths = @(
 )
 $iconMapPath = Join-Path $PSScriptRoot "map_icons.csv"
 $iconDirectoryPath = Join-Path $PSScriptRoot "kbd-icons"
-$outputSvgPath = Join-Path $PSScriptRoot "keyboard-map-tks.svg"
+$outputSvgPath = Join-Path $PSScriptRoot "../keyboard-map-tks.svg"
 
 # --- Main Logic ---
 try {
