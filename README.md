@@ -13,14 +13,14 @@ Built using: [AutoHotkey](https://www.autohotkey.com)
 ##### NOTE :
 
 Normal <kbd>Caps</kbd> lock functionality will stop working once the program begins.
-Double tap the <kbd>Caps</kbd> key for normal caps lock opeartion.
+Double tap the <kbd>Caps</kbd> key for normal caps lock operation.
 
 In case if you ever need to disable `caps` functionality you may suspend the program from the notification area (`Caps Keyboard icon` > `Right Click` > `Suspend Hotkeys`)
 
 ## Shortcuts
 
 <p align="center">
-    <img src="resource/keyboard-map-tks.svg" alt="Keyboard Shortcut Map" width="99%"/>
+    <img src="keyboard-map-tks.svg" alt="Keyboard Shortcut Map" width="99%"/>
 </p>
 
 | Serial | Key                  | Shift         | Primary                                           | Modifier         | Secondary  |
@@ -45,51 +45,51 @@ In case if you ever need to disable `caps` functionality you may suspend the pro
 | 18     | <kbd>G</kbd>         |               | <kbd>Mouse Left button</kbd>                      |                  |            |
 | 19     | <kbd>H</kbd>         |               | <kbd>Mouse Right button</kbd>                     |                  |            |
 | 20     | <kbd>J</kbd>         |               | <kbd>←</kbd>                                      |                  |            |
-| 22     | <kbd>K</kbd>         |               | <kbd>↓</kbd>                                      |                  |            |
-| 23     | <kbd>L</kbd>         |               | <kbd>→</kbd>                                      |                  |            |
-| 24     | <kbd>;</kbd>         | <kbd>:</kbd>  | <kbd>Volume Mute</kbd>                            |                  |            |
-| 25     | <kbd>'</kbd>         | <kbd>"</kbd>  | Open Notepad                                      |                  |            |
-| 26     | <kbd>Enter</kbd>     |               |                                                   |                  |            |
-| 27     | <kbd>Z</kbd>         |               | Turn off MONITOR                                  |                  |            |
-| 28     | <kbd>X</kbd>         |               | <kbd>Browser ←</kbd>                              |                  |            |
-| 29     | <kbd>C</kbd>         |               | <kbd>Alt</kbd> + <kbd>←</kbd>                     |                  |            |
-| 30     | <kbd>V</kbd>         |               | <kbd>Ctrl</kbd> + <kbd>←</kbd>                    |                  |            |
-| 31     | <kbd>B</kbd>         |               | paste type                                        | <kbd>space</kbd> | end wait   |
-| 32     | <kbd>N</kbd>         |               | <kbd>Ctrl</kbd> + <kbd>→</kbd>                    |                  |            |
-| 33     | <kbd>M</kbd>         |               | <kbd>Alt</kbd> + <kbd>→</kbd>                     |                  |            |
-| 34     | <kbd>,</kbd>         | <kbd><</kbd>  | <kbd>Browser →</kbd>                              |                  |            |
-| 35     | <kbd>.</kbd>         | <kbd>></kbd>  | Toggle DARK MODE                                  |                  |            |
-| 36     | <kbd>/</kbd>         | <kbd>?</kbd>  | Open Code editor                                  |                  |            |
-| 37     | <kbd>Shift</kbd>     |               |                                                   |                  |            |
-| 38     | <kbd>`</kbd>         | <kbd>~</kbd>  |                                                   |                  |            |
-| 39     | <kbd>1</kbd>         | <kbd>!</kbd>  |                                                   |                  |            |
-| 40     | <kbd>2</kbd>         | <kbd>@</kbd>  |                                                   |                  |            |
-| 41     | <kbd>3</kbd>         | <kbd>#</kbd>  |                                                   |                  |            |
-| 42     | <kbd>4</kbd>         | <kbd>₹</kbd>  | <kbd>₹</kbd>                                      |                  |            |
-| 43     | <kbd>5</kbd>         | <kbd>%</kbd>  |                                                   |                  |            |
-| 44     | <kbd>6</kbd>         | <kbd>^</kbd>  |                                                   |                  |            |
-| 45     | <kbd>7</kbd>         | <kbd>&</kbd>  |                                                   |                  |            |
-| 46     | <kbd>8</kbd>         | <kbd>*</kbd>  |                                                   |                  |            |
-| 47     | <kbd>9</kbd>         | <kbd>(</kbd>  |                                                   |                  |            |
-| 48     | <kbd>0</kbd>         | <kbd>)</kbd>  |                                                   |                  |            |
-| 49     | <kbd>-</kbd>         | <kbd>_</kbd>  | <kbd>—</kbd>                                      |                  |            |
-| 50     | <kbd>=</kbd>         | <kbd>+</kbd>  | Open keyboard map                                 |                  |            |
-| 51     | <kbd>Backspace</kbd> | <kbd>Delete</kbd> |                                               | <kbd>Ctrl</kbd>  | whole word |
-| 52     | <kbd>Space</kbd>     |               | TERMINAL : active path                            |                  |            |
-| 53     | <kbd>Prtsc</kbd>     |               | <kbd>7</kbd>                                      |                  |            |
-| 54     | <kbd>Scrlk</kbd>     |               | <kbd>8</kbd>                                      |                  |            |
-| 55     | <kbd>Pause</kbd>     |               | <kbd>9</kbd>                                      |                  |            |
-| 56     | <kbd>Del</kbd>       |               | <kbd>1</kbd>                                      |                  |            |
-| 57     | <kbd>Home</kbd>      |               | <kbd>5</kbd>                                      |                  |            |
-| 58     | <kbd>End</kbd>       |               | <kbd>2</kbd>                                      |                  |            |
-| 59     | <kbd>Pg Up</kbd>     |               | <kbd>6</kbd>                                      |                  |            |
-| 60     | <kbd>Pg Dn</kbd>     |               | <kbd>3</kbd>                                      |                  |            |
-| 61     | <kbd>Ins</kbd>       |               | <kbd>4</kbd>                                      |                  |            |
-| 62     | <kbd>↑</kbd>         |               | <kbd>0</kbd>                                      |                  |            |
-| 63     | <kbd>↓</kbd>         |               | <kbd>.</kbd>                                      |                  |            |
-| 64     | <kbd>←</kbd>         |               | <kbd>-</kbd>                                      |                  |            |
-| 65     | <kbd>→</kbd>         |               | <kbd>+</kbd>                                      |                  |            |
-| 66     | <kbd>Menu</kbd>      |               | APP SHORTCUT menu                                 |                  |            |
+| 21     | <kbd>K</kbd>         |               | <kbd>↓</kbd>                                      |                  |            |
+| 22     | <kbd>L</kbd>         |               | <kbd>→</kbd>                                      |                  |            |
+| 23     | <kbd>;</kbd>         | <kbd>:</kbd>  | <kbd>Volume Mute</kbd>                            |                  |            |
+| 24     | <kbd>'</kbd>         | <kbd>"</kbd>  | Open Notepad                                      |                  |            |
+| 25     | <kbd>Enter</kbd>     |               |                                                   |                  |            |
+| 26     | <kbd>Z</kbd>         |               | Turn off MONITOR                                  |                  |            |
+| 27     | <kbd>X</kbd>         |               | <kbd>Browser ←</kbd>                              |                  |            |
+| 28     | <kbd>C</kbd>         |               | <kbd>Alt</kbd> + <kbd>←</kbd>                     |                  |            |
+| 29     | <kbd>V</kbd>         |               | <kbd>Ctrl</kbd> + <kbd>←</kbd>                    |                  |            |
+| 30     | <kbd>B</kbd>         |               | paste type                                        | <kbd>space</kbd> | end wait   |
+| 31     | <kbd>N</kbd>         |               | <kbd>Ctrl</kbd> + <kbd>→</kbd>                    |                  |            |
+| 32     | <kbd>M</kbd>         |               | <kbd>Alt</kbd> + <kbd>→</kbd>                     |                  |            |
+| 33     | <kbd>,</kbd>         | <kbd><</kbd>  | <kbd>Browser →</kbd>                              |                  |            |
+| 34     | <kbd>.</kbd>         | <kbd>></kbd>  | Toggle DARK MODE                                  |                  |            |
+| 35     | <kbd>/</kbd>         | <kbd>?</kbd>  | Open Code editor                                  |                  |            |
+| 36     | <kbd>Shift</kbd>     |               |                                                   |                  |            |
+| 37     | <kbd>`</kbd>         | <kbd>~</kbd>  |                                                   |                  |            |
+| 38     | <kbd>1</kbd>         | <kbd>!</kbd>  |                                                   |                  |            |
+| 39     | <kbd>2</kbd>         | <kbd>@</kbd>  |                                                   |                  |            |
+| 40     | <kbd>3</kbd>         | <kbd>#</kbd>  |                                                   |                  |            |
+| 41     | <kbd>4</kbd>         | <kbd>₹</kbd>  | <kbd>₹</kbd>                                      |                  |            |
+| 42     | <kbd>5</kbd>         | <kbd>%</kbd>  |                                                   |                  |            |
+| 43     | <kbd>6</kbd>         | <kbd>^</kbd>  |                                                   |                  |            |
+| 44     | <kbd>7</kbd>         | <kbd>&</kbd>  |                                                   |                  |            |
+| 45     | <kbd>8</kbd>         | <kbd>*</kbd>  |                                                   |                  |            |
+| 46     | <kbd>9</kbd>         | <kbd>(</kbd>  |                                                   |                  |            |
+| 47     | <kbd>0</kbd>         | <kbd>)</kbd>  |                                                   |                  |            |
+| 48     | <kbd>-</kbd>         | <kbd>_</kbd>  | <kbd>–</kbd>                                      | <kbd>Shift</kbd> | <kbd>—</kbd> |
+| 49     | <kbd>=</kbd>         | <kbd>+</kbd>  | Open keyboard map                                 |                  |            |
+| 50     | <kbd>Backspace</kbd> | <kbd>Delete</kbd> |                                               | <kbd>Ctrl</kbd>  | whole word |
+| 51     | <kbd>Space</kbd>     |               | TERMINAL : active path                            |                  |            |
+| 52     | <kbd>Prtsc</kbd>     |               | <kbd>7</kbd>                                      |                  |            |
+| 53     | <kbd>Scrlk</kbd>     |               | <kbd>8</kbd>                                      |                  |            |
+| 54     | <kbd>Pause</kbd>     |               | <kbd>9</kbd>                                      |                  |            |
+| 55     | <kbd>Del</kbd>       |               | <kbd>1</kbd>                                      |                  |            |
+| 56     | <kbd>Home</kbd>      |               | <kbd>5</kbd>                                      |                  |            |
+| 57     | <kbd>End</kbd>       |               | <kbd>2</kbd>                                      |                  |            |
+| 58     | <kbd>Pg Up</kbd>     |               | <kbd>6</kbd>                                      |                  |            |
+| 59     | <kbd>Pg Dn</kbd>     |               | <kbd>3</kbd>                                      |                  |            |
+| 60     | <kbd>Ins</kbd>       |               | <kbd>4</kbd>                                      |                  |            |
+| 61     | <kbd>↑</kbd>         |               | <kbd>0</kbd>                                      |                  |            |
+| 62     | <kbd>↓</kbd>         |               | <kbd>.</kbd>                                      |                  |            |
+| 63     | <kbd>←</kbd>         |               | <kbd>-</kbd>                                      |                  |            |
+| 64     | <kbd>→</kbd>         |               | <kbd>+</kbd>                                      |                  |            |
+| 65     | <kbd>Menu</kbd>      |               | APP SHORTCUT menu                                 |                  |            |
 
 [ #53 - #61 : optimized for Ten Keyless (TKL) keyboards ]
 
@@ -97,15 +97,15 @@ In case if you ever need to disable `caps` functionality you may suspend the pro
 
 | Serial       | Key         | Action              |
 |--------------|-------------|---------------------|
-|1             |<kbd>`</kbd> |SWITCH WINDOW sameapp|
+| 66     |<kbd>`</kbd> |SWITCH WINDOW sameapp|
 
 #### Direct (without combination)
 
 | Serial | Key              | Action      |
 |--------|------------------|-------------|
-|   1    | <kbd>Prtsc</kbd> | Volume Mute |
-|   2    | <kbd>Scrlk</kbd> | Volume Down |
-|   3    | <kbd>Pause</kbd> | Volume Up   |
+| 67     | <kbd>Prtsc</kbd> | Volume Mute |
+| 68     | <kbd>Scrlk</kbd> | Volume Down |
+| 69     | <kbd>Pause</kbd> | Volume Up   |
 
 ## Config
 
