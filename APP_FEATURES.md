@@ -45,6 +45,10 @@ With <kbd>Caps</kbd> held, the nav cluster emulates a numpad on tenkeyless board
 
 - <kbd>Alt</kbd>+<kbd>`</kbd> — switch between windows of the same app.
 
+## Reliability
+
+- On wake from sleep, the layer state resets and the app reloads itself once (the keyboard hook can die across suspend). At startup, stale duplicate `caps.exe` processes are closed automatically.
+
 ## Config (`config.ini`)
 
 - `right_click_left=1` — maps mouse right click to left click.

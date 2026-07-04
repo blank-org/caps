@@ -16,8 +16,22 @@ capsLocked := 0
 capsIsHeld := 0
 capsActive := 0
 
+Caps_CloseStaleInstances()
 Caps_ResetState()
 OnMessage(0x218, "Caps_PowerBroadcast")
+
+; After resume, #SingleInstance Force can fail to replace an unresponsive old
+; instance and copies pile up; hard-close any other process running this exe.
+Caps_CloseStaleInstances() {
+    if (!A_IsCompiled)
+        return
+    ownPid := DllCall("GetCurrentProcessId")
+    SplitPath, A_ScriptFullPath, exeName
+    for proc in ComObjGet("winmgmts:").ExecQuery("SELECT ProcessId, ExecutablePath FROM Win32_Process WHERE Name = '" . exeName . "'") {
+        if (proc.ProcessId != ownPid && proc.ExecutablePath = A_ScriptFullPath)
+            Process, Close, % proc.ProcessId
+    }
+}
 
 Caps_ResetState() {
     global lastCapsLockTime, capsLocked, capsIsHeld, capsActive
@@ -29,9 +43,13 @@ Caps_ResetState() {
 }
 
 Caps_PowerBroadcast(wParam, lParam, msg, hwnd) {
+    ; PBT_APMRESUMECRITICAL (0x6) / PBT_APMRESUMESUSPEND (0x7) / PBT_APMRESUMEAUTOMATIC (0x12)
     if (wParam = 0x6 || wParam = 0x7 || wParam = 0x12) {
         Caps_ResetState()
-        SetTimer, Caps_ReloadAfterResume, -1500
+        ; Reload only on 0x12 — sent exactly once per wake. 0x7 follows it on user
+        ; input and used to schedule a second reload, piling up caps.exe processes.
+        if (wParam = 0x12)
+            SetTimer, Caps_ReloadAfterResume, -1500
     }
     return true
 }
