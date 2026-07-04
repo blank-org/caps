@@ -7,9 +7,9 @@
 SetBatchLines, -1
 
 ; CapsLock layer state
-; capsLocked  — double-tapped, stays on until next CapsLock press
+; capsLocked  — double-tapped: normal caps lock (capitals), layer off until next press
 ; capsIsHeld  — key is physically down (filters spurious auto-repeat events)
-; capsActive  — layer is live (held OR locked); drives #If below, faster than GetKeyState
+; capsActive  — nav layer is live (held, not locked); drives #If below, faster than GetKeyState
 doubleCapsLockInterval := 300
 lastCapsLockTime := 0
 capsLocked := 0
@@ -52,10 +52,13 @@ Caps_ReloadAfterResume() {
         return
     }
     now := A_TickCount
-    if (now - lastCapsLockTime < doubleCapsLockInterval)
+    if (now - lastCapsLockTime < doubleCapsLockInterval) {
         capsLocked := 1
+        capsActive := 0 ; layer off, CapsLock stays on: capitals type normally
+    } else {
+        capsActive := 1
+    }
     lastCapsLockTime := now
-    capsActive := 1
     SetCapsLockState, On
 return
 
