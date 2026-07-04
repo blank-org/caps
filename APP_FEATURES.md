@@ -4,8 +4,8 @@ Caps repurposes the <kbd>CapsLock</kbd> key as a hold-modifier that activates a 
 
 ## Caps layer basics
 
-- **Hold <kbd>Caps</kbd>** — layer active while held; CapsLock LED doubles as the layer indicator.
-- **Double-tap <kbd>Caps</kbd>** — normal caps lock (type capitals); next press turns it off.
+- **Hold <kbd>Caps</kbd>** — layer active while held.
+- **Double-tap <kbd>Caps</kbd>** — normal caps lock (type capitals); next press turns it off. The CapsLock LED lights only in this mode.
 - **Suspend** — tray icon > right-click > Suspend Hotkeys.
 
 ## Navigation (layer)

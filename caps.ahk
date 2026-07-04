@@ -10,11 +10,16 @@ SetBatchLines, -1
 ; capsLocked  — double-tapped: normal caps lock (capitals), layer off until next press
 ; capsIsHeld  — key is physically down (filters spurious auto-repeat events)
 ; capsActive  — nav layer is live (held, not locked); drives #If below, faster than GetKeyState
+; capsLedOn   — desired real CapsLock toggle; on only while capsLocked, so the LED
+;               means capitals. Holding the layer does not touch the real toggle:
+;               rapid per-tap toggle injections race the input queue and get lost.
 doubleCapsLockInterval := 300
 lastCapsLockTime := 0
 capsLocked := 0
 capsIsHeld := 0
 capsActive := 0
+capsLedOn := 0
+capsLedTries := 0
 
 Caps_CloseStaleInstances()
 Caps_ResetState()
@@ -34,12 +39,47 @@ Caps_CloseStaleInstances() {
 }
 
 Caps_ResetState() {
-    global lastCapsLockTime, capsLocked, capsIsHeld, capsActive
+    global lastCapsLockTime, capsLocked, capsIsHeld, capsActive, capsLedOn
     lastCapsLockTime := 0
     capsLocked := 0
     capsIsHeld := 0
     capsActive := 0
-    SetCapsLockState, Off
+    Caps_SetLed(0)
+}
+
+; True CapsLock toggle state. This thread never receives keyboard input, so its own
+; key-state view is stale/zeroed; briefly attach to the foreground thread's input
+; state to read the value that actually capitalizes the user's typing.
+Caps_RealToggleState() {
+    self := DllCall("GetCurrentThreadId", "UInt")
+    tid := DllCall("GetWindowThreadProcessId", "Ptr", DllCall("GetForegroundWindow", "Ptr"), "Ptr", 0, "UInt")
+    attached := (tid && tid != self) ? DllCall("AttachThreadInput", "UInt", self, "UInt", tid, "Int", 1) : 0
+    state := DllCall("GetKeyState", "Int", 0x14, "Short") & 1
+    if (attached)
+        DllCall("AttachThreadInput", "UInt", self, "UInt", tid, "Int", 0)
+    return state
+}
+
+; Drive the real CapsLock toggle to match capsLedOn. SetCapsLockState is not usable
+; here: it consults this thread's stale key-state view and skips needed toggles; and
+; even direct injections issued inside the CapsLock hotkey handler get discarded when
+; turning the state off. So the worker runs from a timer (outside handler context),
+; verifies the real state, and re-injects until it converges. Injections are marked
+; KEY_IGNORE (0xFFC3D44F) so our own hook passes them through instead of suppressing.
+Caps_SetLed(on) {
+    global capsLedOn, capsLedTries
+    capsLedOn := on
+    capsLedTries := 0
+    SetTimer, Caps_LedWorker, -50
+}
+
+Caps_LedWorker() {
+    global capsLedOn, capsLedTries
+    if (Caps_RealToggleState() = capsLedOn || ++capsLedTries > 8)
+        return
+    DllCall("keybd_event", "UChar", 0x14, "UChar", 0x3A, "UInt", 0, "Ptr", 0xFFC3D44F)
+    DllCall("keybd_event", "UChar", 0x14, "UChar", 0x3A, "UInt", 0x2, "Ptr", 0xFFC3D44F)
+    SetTimer, Caps_LedWorker, -60
 }
 
 Caps_PowerBroadcast(wParam, lParam, msg, hwnd) {
@@ -58,7 +98,7 @@ Caps_ReloadAfterResume() {
     Reload
 }
 
-; No ~ prefix: AHK owns CapsLock entirely via SetCapsLockState, no race with system toggle
+; No ~ prefix: AHK owns CapsLock entirely via Caps_SetLed, no race with system toggle
 *CapsLock::
     if (capsIsHeld)
         return
@@ -66,26 +106,24 @@ Caps_ReloadAfterResume() {
     if (capsLocked) {
         capsLocked := 0
         capsActive := 0
-        SetCapsLockState, Off
+        Caps_SetLed(0)
         return
     }
     now := A_TickCount
     if (now - lastCapsLockTime < doubleCapsLockInterval) {
         capsLocked := 1
-        capsActive := 0 ; layer off, CapsLock stays on: capitals type normally
+        capsActive := 0 ; layer off, real caps lock on: capitals type normally
+        Caps_SetLed(1)
     } else {
         capsActive := 1
     }
     lastCapsLockTime := now
-    SetCapsLockState, On
 return
 
 *CapsLock up::
     capsIsHeld := 0
-    if (capsLocked)
-        return
-    capsActive := 0
-    SetCapsLockState, Off
+    if (!capsLocked)
+        capsActive := 0
 return
 
 ; Read config.ini to check if right_click_left is enabled
