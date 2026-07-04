@@ -102,8 +102,8 @@ printScreen::volume_mute
 AppSKey::StartRun()
 
 q::SleepOut()
-w::+up
-e::ins
+w::up
+e::+up
 r::pgdn
 t::home
 y::end
@@ -115,12 +115,12 @@ p::media_play_pause
 ]::media_prev
 \::media_next
 
-a::^+left
-s::+down
-d::^+right
-f::mbutton
-g::lbutton
-h::rbutton
+a::left
+s::down
+d::right
+f::+down
+g::^+left
+h::^+right
 j::left
 k::down
 l::right
@@ -141,11 +141,11 @@ m::!right
 ;rshift
 
 ;``
-;1
-;2
-;3
+1::lbutton
+2::mbutton
+3::rbutton
 4::Send {₹}
-;5
+5::ins
 ;6
 ;7
 ;8

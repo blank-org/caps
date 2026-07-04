@@ -3,7 +3,7 @@
 Caps - AHK
 
 Helps you navigate and edit text faster on a physical keyboard with shortcuts like: <kbd>Caps</kbd> + <kbd>Y</kbd> : <kbd>Home</kbd> - i.e. cursor to beginning of the line.
-Also <kbd>I</kbd><kbd>K</kbd><kbd>J</kbd><kbd>L</kbd> to <kbd>↑</kbd><kbd>↓</kbd><kbd>←</kbd><kbd>→</kbd> direction keys.
+Also <kbd>W</kbd><kbd>S</kbd><kbd>A</kbd><kbd>D</kbd> and <kbd>I</kbd><kbd>K</kbd><kbd>J</kbd><kbd>L</kbd> to <kbd>↑</kbd><kbd>↓</kbd><kbd>←</kbd><kbd>→</kbd> direction keys — twin arrow clusters for either hand.
 
 The main goal is to Not have to lift the hands from their default type resting position - i.e. index fingers on the <kbd>F</kbd> & <kbd>J</kbd> keys.
 
@@ -26,8 +26,8 @@ In case if you ever need to disable `caps` functionality you may suspend the pro
 | Serial | Key                  | Shift         | Primary                                           | Modifier         | Secondary  |
 | ------ | -------------------- | ------------  | ------------------------------------------------- | ---------------- | ---------- |
 | 1      | <kbd>Q</kbd>         |               | SLEEP                                             |                  |            |
-| 2      | <kbd>W</kbd>         |               | <kbd>Shift</kbd> + <kbd>↑</kbd>                   |                  |            |
-| 3      | <kbd>E</kbd>         |               | <kbd>Insert</kbd>                                 |                  |            |
+| 2      | <kbd>W</kbd>         |               | <kbd>↑</kbd>                                      |                  |            |
+| 3      | <kbd>E</kbd>         |               | <kbd>Shift</kbd> + <kbd>↑</kbd>                   |                  |            |
 | 4      | <kbd>R</kbd>         |               | <kbd>Page Down</kbd>                              |                  |            |
 | 5      | <kbd>T</kbd>         |               | <kbd>Home</kbd>                                   |                  |            |
 | 6      | <kbd>Y</kbd>         |               | <kbd>End</kbd>                                    |                  |            |
@@ -38,12 +38,12 @@ In case if you ever need to disable `caps` functionality you may suspend the pro
 | 11     | <kbd>[</kbd>         | <kbd>{</kbd>  | Volume Up                                         |                  |            |
 | 12     | <kbd>]</kbd>         | <kbd>}</kbd>  | ⏮️                                                |                  |            |
 | 13     | <kbd>\\</kbd>        | <kbd>\|</kbd> | ⏭️                                                |                  |            |
-| 14     | <kbd>A</kbd>         |               | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>←</kbd> |                  |            |
-| 15     | <kbd>S</kbd>         |               | <kbd>Shift</kbd> + <kbd>↓</kbd>                   |                  |            |
-| 16     | <kbd>D</kbd>         |               | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>→</kbd> |                  |            |
-| 17     | <kbd>F</kbd>         |               | <kbd>Mouse Middle button</kbd>                    |                  |            |
-| 18     | <kbd>G</kbd>         |               | <kbd>Mouse Left button</kbd>                      |                  |            |
-| 19     | <kbd>H</kbd>         |               | <kbd>Mouse Right button</kbd>                     |                  |            |
+| 14     | <kbd>A</kbd>         |               | <kbd>←</kbd>                                      |                  |            |
+| 15     | <kbd>S</kbd>         |               | <kbd>↓</kbd>                                      |                  |            |
+| 16     | <kbd>D</kbd>         |               | <kbd>→</kbd>                                      |                  |            |
+| 17     | <kbd>F</kbd>         |               | <kbd>Shift</kbd> + <kbd>↓</kbd>                   |                  |            |
+| 18     | <kbd>G</kbd>         |               | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>←</kbd> |                  |            |
+| 19     | <kbd>H</kbd>         |               | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>→</kbd> |                  |            |
 | 20     | <kbd>J</kbd>         |               | <kbd>←</kbd>                                      |                  |            |
 | 21     | <kbd>K</kbd>         |               | <kbd>↓</kbd>                                      |                  |            |
 | 22     | <kbd>L</kbd>         |               | <kbd>→</kbd>                                      |                  |            |
@@ -62,11 +62,11 @@ In case if you ever need to disable `caps` functionality you may suspend the pro
 | 35     | <kbd>/</kbd>         | <kbd>?</kbd>  | Open Code editor                                  |                  |            |
 | 36     | <kbd>Shift</kbd>     |               |                                                   |                  |            |
 | 37     | <kbd>`</kbd>         | <kbd>~</kbd>  |                                                   |                  |            |
-| 38     | <kbd>1</kbd>         | <kbd>!</kbd>  |                                                   |                  |            |
-| 39     | <kbd>2</kbd>         | <kbd>@</kbd>  |                                                   |                  |            |
-| 40     | <kbd>3</kbd>         | <kbd>#</kbd>  |                                                   |                  |            |
+| 38     | <kbd>1</kbd>         | <kbd>!</kbd>  | <kbd>Mouse Left button</kbd>                      |                  |            |
+| 39     | <kbd>2</kbd>         | <kbd>@</kbd>  | <kbd>Mouse Middle button</kbd>                    |                  |            |
+| 40     | <kbd>3</kbd>         | <kbd>#</kbd>  | <kbd>Mouse Right button</kbd>                     |                  |            |
 | 41     | <kbd>4</kbd>         | <kbd>₹</kbd>  | <kbd>₹</kbd>                                      |                  |            |
-| 42     | <kbd>5</kbd>         | <kbd>%</kbd>  |                                                   |                  |            |
+| 42     | <kbd>5</kbd>         | <kbd>%</kbd>  | <kbd>Insert</kbd>                                 |                  |            |
 | 43     | <kbd>6</kbd>         | <kbd>^</kbd>  |                                                   |                  |            |
 | 44     | <kbd>7</kbd>         | <kbd>&</kbd>  |                                                   |                  |            |
 | 45     | <kbd>8</kbd>         | <kbd>*</kbd>  |                                                   |                  |            |
