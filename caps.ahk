@@ -206,10 +206,14 @@ m::!right
 4::Send {₹}
 5::ins
 ;6
-;7
-;8
-;9
-;0
+; 7-0 drive the mouse pointer directly (Windows MouseKeys ignored our numpad
+; injections). Modifiers are sampled live each tick inside Caps_MouseMove:
+;   Shift = fast · Ctrl = precise · none = normal · Alt rotates 45° to a diagonal.
+;   cardinal: 7 ←  8 ↑  9 ↓  0 →      with Alt: 7 ↖  8 ↗  9 ↙  0 ↘
+*7::Caps_MouseMove("7")
+*8::Caps_MouseMove("8")
+*9::Caps_MouseMove("9")
+*0::Caps_MouseMove("0")
 -::–
 +-::—
 =::OpenKeyboardMap()
@@ -234,3 +238,27 @@ right::+
 
 
 #include right_to_left_click.ahk
+
+; Continuous relative mouse movement for the caps-layer 7/8/9/0 keys. Modifier state
+; is re-sampled every tick, so speed and diagonal can change mid-hold without
+; releasing the movement key:
+;   Ctrl = precise (small step), Shift = fast (large step), neither = normal;
+;   Alt rotates the direction 45deg clockwise into the matching diagonal.
+; #MaxThreadsPerHotkey defaults to 1, so key auto-repeat cannot spawn a second loop.
+Caps_MouseMove(key) {
+    while GetKeyState(key, "P") {
+        step := GetKeyState("Ctrl", "P") ? 4 : (GetKeyState("Shift", "P") ? 30 : 12)
+        alt := GetKeyState("Alt", "P")
+        if (key = "7") {         ; ←  /  ↖
+            dx := -1, dy := alt ? -1 : 0
+        } else if (key = "8") {  ; ↑  /  ↗
+            dx := alt ? 1 : 0, dy := -1
+        } else if (key = "9") {  ; ↓  /  ↙
+            dx := alt ? -1 : 0, dy := 1
+        } else {                 ; 0:  →  /  ↘
+            dx := 1, dy := alt ? 1 : 0
+        }
+        MouseMove, dx * step, dy * step, 0, R
+        Sleep, 10
+    }
+}
