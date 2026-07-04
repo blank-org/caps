@@ -20,6 +20,8 @@ capsIsHeld := 0
 capsActive := 0
 capsLedOn := 0
 capsLedTries := 0
+moveHeld := 0    ; bitmask of caps-layer mouse keys currently held (see Caps_MoveKey)
+moveTimerOn := 0
 
 Caps_CloseStaleInstances()
 Caps_ResetState()
@@ -44,7 +46,21 @@ Caps_ResetState() {
     capsLocked := 0
     capsIsHeld := 0
     capsActive := 0
+    Caps_ReleaseAll()
     Caps_SetLed(0)
+}
+
+; Safety fallback: release anything the caps layer can hold down — the mouse buttons
+; behind 1/2/3, the modifiers behind the shift/ctrl/alt remaps — and stop the mouse
+; mover, so a layer toggle or a resume can never leave a button or modifier stuck.
+; Each key is released ONLY if it is currently down: a bare {RButton Up} with no
+; matching Down is delivered as WM_RBUTTONUP and pops a context menu, so unconditional
+; releases would fire a menu (and stray clicks) on every toggle.
+Caps_ReleaseAll() {
+    Caps_StopMouseMove()
+    for index, key in ["LButton", "MButton", "RButton", "LShift", "RShift", "LCtrl", "RCtrl", "LAlt", "RAlt"]
+        if GetKeyState(key)
+            Send, {Blind}{%key% Up}
 }
 
 ; True CapsLock toggle state. This thread never receives keyboard input, so its own
@@ -103,6 +119,7 @@ Caps_ReloadAfterResume() {
     if (capsIsHeld)
         return
     capsIsHeld := 1
+    Caps_ReleaseAll() ; safety fallback: a toggle must never carry a stuck button/modifier
     if (capsLocked) {
         capsLocked := 0
         capsActive := 0
@@ -207,13 +224,18 @@ m::!right
 5::ins
 ;6
 ; 7-0 drive the mouse pointer directly (Windows MouseKeys ignored our numpad
-; injections). Modifiers are sampled live each tick inside Caps_MouseMove:
+; injections). Explicit down/up hotkey pairs own the held-key state — see the
+; Caps_MouseMoveTick comment for why GetKeyState polling is not usable here.
 ;   Shift = fast · Ctrl = precise · none = normal · Alt rotates 45° to a diagonal.
 ;   cardinal: 7 ←  8 ↑  9 ↓  0 →      with Alt: 7 ↖  8 ↗  9 ↙  0 ↘
-*7::Caps_MouseMove("7")
-*8::Caps_MouseMove("8")
-*9::Caps_MouseMove("9")
-*0::Caps_MouseMove("0")
+*7::Caps_MoveKey("7", 1)
+*7 up::Caps_MoveKey("7", 0)
+*8::Caps_MoveKey("8", 1)
+*8 up::Caps_MoveKey("8", 0)
+*9::Caps_MoveKey("9", 1)
+*9 up::Caps_MoveKey("9", 0)
+*0::Caps_MoveKey("0", 1)
+*0 up::Caps_MoveKey("0", 0)
 -::–
 +-::—
 =::OpenKeyboardMap()
@@ -239,26 +261,71 @@ right::+
 
 #include right_to_left_click.ahk
 
-; Continuous relative mouse movement for the caps-layer 7/8/9/0 keys. Modifier state
-; is re-sampled every tick, so speed and diagonal can change mid-hold without
-; releasing the movement key:
-;   Ctrl = precise (small step), Shift = fast (large step), neither = normal;
+; Non-blocking mouse mover for the caps-layer 7/8/9/0 keys, driven by a timer so
+; every hotkey thread returns instantly (an earlier blocking `while GetKeyState()`
+; loop desynced modifier tracking). Crucially it does NOT poll GetKeyState(.., "P"):
+; that reads AHK's own hook bookkeeping, which goes stale when Shift/Ctrl is mixed
+; into these suppressed wildcard hotkeys — first seen as movement continuing after
+; the key was released, then as speed stuck fast/precise after leaving Shift/Ctrl.
+; Instead the down/up hotkey pairs above own the held-key state in moveHeld, and
+; modifiers are read from the OS async key state each tick (so speed/diagonal still
+; update live mid-hold) — the OS self-heals that state on every real key event.
+; The timer self-stops when the layer drops or all move keys are up, clearing
+; moveHeld so a key-up missed while the layer is off can't leave a stale direction.
+; moveHeld is an integer bitmask, NOT an object keyed by key name: v1 objects store
+; a numeric string via a variable and via a literal under two different keys, so a
+; moveKeys["7"] lookup never saw what moveKeys[key] stored.
+;   Ctrl = precise (small step) · Shift = fast (large step) · neither = normal
 ;   Alt rotates the direction 45deg clockwise into the matching diagonal.
-; #MaxThreadsPerHotkey defaults to 1, so key auto-repeat cannot spawn a second loop.
-Caps_MouseMove(key) {
-    while GetKeyState(key, "P") {
-        step := GetKeyState("Ctrl", "P") ? 4 : (GetKeyState("Shift", "P") ? 30 : 12)
-        alt := GetKeyState("Alt", "P")
-        if (key = "7") {         ; ←  /  ↖
-            dx := -1, dy := alt ? -1 : 0
-        } else if (key = "8") {  ; ↑  /  ↗
-            dx := alt ? 1 : 0, dy := -1
-        } else if (key = "9") {  ; ↓  /  ↙
-            dx := alt ? -1 : 0, dy := 1
-        } else {                 ; 0:  →  /  ↘
-            dx := 1, dy := alt ? 1 : 0
-        }
-        MouseMove, dx * step, dy * step, 0, R
-        Sleep, 10
+Caps_MoveKey(key, down) {
+    global moveHeld, moveTimerOn
+    bit := key = "7" ? 1 : key = "8" ? 2 : key = "9" ? 4 : 8
+    moveHeld := down ? (moveHeld | bit) : (moveHeld & ~bit)
+    if (down && !moveTimerOn) {
+        moveTimerOn := 1
+        SetTimer, Caps_MouseMoveTick, 10
     }
 }
+
+Caps_StopMouseMove() {
+    global moveHeld, moveTimerOn
+    moveTimerOn := 0
+    moveHeld := 0
+    SetTimer, Caps_MouseMoveTick, Off
+}
+
+Caps_ModifierDown(vk) {
+    return DllCall("GetAsyncKeyState", "Int", vk, "UShort") & 0x8000
+}
+
+Caps_MouseMoveTick:
+    if (!capsActive || !moveHeld) {
+        Caps_StopMouseMove()
+        return
+    }
+    moveDX := 0
+    moveDY := 0
+    moveAlt := Caps_ModifierDown(0x12)  ; VK_MENU (Alt)
+    if (moveHeld & 1) {                 ; 7:  ← / ↖
+        moveDX := moveDX - 1
+        moveDY := moveDY - (moveAlt ? 1 : 0)
+    }
+    if (moveHeld & 2) {                 ; 8:  ↑ / ↗
+        moveDY := moveDY - 1
+        moveDX := moveDX + (moveAlt ? 1 : 0)
+    }
+    if (moveHeld & 4) {                 ; 9:  ↓ / ↙
+        moveDY := moveDY + 1
+        moveDX := moveDX - (moveAlt ? 1 : 0)
+    }
+    if (moveHeld & 8) {                 ; 0:  → / ↘
+        moveDX := moveDX + 1
+        moveDY := moveDY + (moveAlt ? 1 : 0)
+    }
+    ; opposing keys can cancel out; keep ticking so releasing one resumes movement
+    if (moveDX = 0 && moveDY = 0)
+        return
+    ; VK_CONTROL / VK_SHIFT
+    moveStep := Caps_ModifierDown(0x11) ? 4 : (Caps_ModifierDown(0x10) ? 30 : 12)
+    MouseMove, moveDX * moveStep, moveDY * moveStep, 0, R
+return
