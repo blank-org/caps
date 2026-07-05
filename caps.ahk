@@ -20,12 +20,25 @@ capsIsHeld := 0
 capsActive := 0
 capsLedOn := 0
 capsLedTries := 0
+rwinIsHeld := 0  ; Right Cmd (RWin) is physically down — alternate layer key, see *RWin
 moveHeld := 0    ; bitmask of caps-layer mouse keys currently held (see Caps_MoveKey)
 moveTimerOn := 0
 
 Caps_CloseStaleInstances()
 Caps_ResetState()
 OnMessage(0x218, "Caps_PowerBroadcast")
+; While the machine is locked, input goes to the secure desktop and this hook
+; sees nothing — a layer key released there is never observed, leaving the
+; layer stuck on after unlock (first symptom: space opens a terminal). Reset on
+; lock and unlock. NOTIFY_FOR_THIS_SESSION = 0.
+DllCall("Wtsapi32\WTSRegisterSessionNotification", "Ptr", A_ScriptHwnd, "UInt", 0)
+OnMessage(0x2B1, "Caps_SessionChange") ; WM_WTSSESSION_CHANGE
+
+; WTS_SESSION_LOCK = 0x7, WTS_SESSION_UNLOCK = 0x8
+Caps_SessionChange(wParam, lParam, msg, hwnd) {
+    if (wParam = 0x7 || wParam = 0x8)
+        Caps_ResetState()
+}
 
 ; After resume, #SingleInstance Force can fail to replace an unresponsive old
 ; instance and copies pile up; hard-close any other process running this exe.
@@ -41,11 +54,12 @@ Caps_CloseStaleInstances() {
 }
 
 Caps_ResetState() {
-    global lastCapsLockTime, capsLocked, capsIsHeld, capsActive, capsLedOn
+    global lastCapsLockTime, capsLocked, capsIsHeld, capsActive, capsLedOn, rwinIsHeld
     lastCapsLockTime := 0
     capsLocked := 0
     capsIsHeld := 0
     capsActive := 0
+    rwinIsHeld := 0
     Caps_ReleaseAll()
     Caps_SetLed(0)
 }
@@ -139,7 +153,37 @@ return
 
 *CapsLock up::
     capsIsHeld := 0
-    if (!capsLocked)
+    if (!capsLocked && !rwinIsHeld)
+        capsActive := 0
+return
+
+; Alternate layer key: the Apple Magic Keyboard does not deliver caps+ctrl+7/8/9 correctly.
+; Right Cmd (RWin) arrives correctly, so holding it drives the nav layer from that board.
+; Hold-only: no double-tap capitals lock, no LED. Suppressed, so a lone press cannot pop
+; the Start menu.
+
+; Win+L is detected in the kernel's raw-input path from PHYSICAL key state,
+; BEFORE low-level hooks run (same protected mechanism as Ctrl+Alt+Del), so no
+; hook trick can stop RWin+L locking: suppression, injected Win-ups, and remaps
+; all run too late, and the DisableLockWorkstation policy escape hatch is not
+; writable without elevation (HKCU\...\Policies is read-only to the user).
+; Fix: a Scancode Map registry value relabels Right Cmd's scancode E0 5C to F24
+; (00 76) inside the kernel, before Win+L detection ever sees a Win key — set
+; 2026-07-05, effective after reboot. *F24 is the layer key from then on;
+; *RWin stays stacked for keyboards without the remap applied.
+*RWin::
+*F24::
+    if (rwinIsHeld)
+        return
+    rwinIsHeld := 1
+    Caps_ReleaseAll() ; same safety fallback as the CapsLock handler
+    capsActive := 1
+return
+
+*RWin up::
+*F24 up::
+    rwinIsHeld := 0
+    if (!capsIsHeld || capsLocked)
         capsActive := 0
 return
 

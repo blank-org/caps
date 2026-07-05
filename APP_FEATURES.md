@@ -5,6 +5,7 @@ Caps repurposes the <kbd>CapsLock</kbd> key as a hold-modifier that activates a 
 ## Caps layer basics
 
 - **Hold <kbd>Caps</kbd>** — layer active while held.
+- **Hold <kbd>Right Cmd</kbd> (Right Win)** — alternate layer key, for keyboards (Apple Magic Keyboard) that don't deliver all CapsLock chords. Hold-only: no double-tap lock, no LED. Requires the Scancode Map registry remap of Right Cmd to F24 (see INSTALL.md) so the kernel's Win+L lock can't trigger; without the remap the key still works as a layer key but Right Cmd+L locks the workstation.
 - **Double-tap <kbd>Caps</kbd>** — normal caps lock (type capitals); next press turns it off. The CapsLock LED lights only in this mode.
 - **Suspend** — tray icon > right-click > Suspend Hotkeys.
 

@@ -110,9 +110,12 @@ if (-not (Test-Path -LiteralPath $ahk2ExePath)) {
     exit 1
 }
 
-& $ahk2ExePath /in caps.ahk /out $outputExePath /icon Resource/Icon/Keyboard.ico
-if ($LASTEXITCODE -ne 0) {
-    exit $LASTEXITCODE
+# Ahk2Exe is a GUI-subsystem app: `&` returns immediately, letting the version
+# patching below race the compiler mid-write. Start-Process -Wait blocks until
+# the exe is fully written and gives a real exit code.
+$ahk2Exe = Start-Process -FilePath $ahk2ExePath -ArgumentList '/in', 'caps.ahk', '/out', "`"$outputExePath`"", '/icon', 'Resource/Icon/Keyboard.ico' -WorkingDirectory $PSScriptRoot -PassThru -Wait
+if ($ahk2Exe.ExitCode -ne 0) {
+    exit $ahk2Exe.ExitCode
 }
 
 if (-not (Test-Path -LiteralPath $outputExePath)) {
