@@ -103,38 +103,14 @@ Get-ChildItem -Path $PSScriptRoot -Filter *.zip | ForEach-Object {
     Move-Item $_.FullName "$archiveDir\$($_.Name)" -Force
 }
 
-$exePath = Join-Path $PSScriptRoot "caps.exe"
-if (Test-Path -LiteralPath $exePath -PathType Leaf) {
-    Add-Type -AssemblyName Microsoft.VisualBasic
-
-    do {
-        try {
-            [Microsoft.VisualBasic.FileIO.FileSystem]::DeleteFile(
-                $exePath,
-                [Microsoft.VisualBasic.FileIO.UIOption]::OnlyErrorDialogs,
-                [Microsoft.VisualBasic.FileIO.RecycleOption]::SendToRecycleBin
-            )
-
-            while (Test-Path -LiteralPath $exePath -PathType Leaf) {
-                Start-Sleep -Milliseconds 250
-            }
-        }
-        catch {
-            Write-Error "Failed to move $exePath to the Recycle Bin: $($_.Exception.Message)" -ErrorAction Continue
-            $retryDelete = Read-Host "Close anything using caps.exe, then retry deleting it? [y/N]"
-            if ($retryDelete -notmatch '(?i)^(?:y|yes)$') {
-                throw "Publishing cancelled because $exePath could not be deleted."
-            }
-        }
-    }
-    while (Test-Path -LiteralPath $exePath -PathType Leaf)
-}
-
 & "$PSScriptRoot\make.ps1"
-if ($LASTEXITCODE -ne 0) {
-    throw "Build failed. Exit code: $LASTEXITCODE."
+$buildSucceeded = $?
+$buildExitCode = $LASTEXITCODE
+if (-not $buildSucceeded) {
+    throw "Build failed. Exit code: $buildExitCode."
 }
 
+$exePath = Join-Path $PSScriptRoot "caps.exe"
 $releaseFiles = @(
     $exePath
     (Join-Path $PSScriptRoot "CREDITS.md")
