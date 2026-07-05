@@ -1,10 +1,53 @@
 Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
+$PSNativeCommandUseErrorActionPreference = $false
 
-$githubToken = $env:GITHUB_TOKEN_BLANK
-if (-not $githubToken) {
-    Write-Error "GITHUB_TOKEN environment variable not set."
+$logPath = Join-Path $PSScriptRoot "publish.log"
+$script:transcriptStarted = $false
+
+trap {
+    $failure = $_ | Out-String
+    if ($script:transcriptStarted) {
+        Stop-Transcript | Out-Null
+        $script:transcriptStarted = $false
+    }
+
+    Add-Content -Path $logPath -Value @(
+        ""
+        "Publish failed at $(Get-Date -Format o)"
+        $failure.TrimEnd()
+    )
+
+    [Console]::Error.WriteLine("Publish failed. See $logPath for details.")
+    [Console]::Error.WriteLine($failure.TrimEnd())
+
     exit 1
+}
+
+Start-Transcript -Path $logPath -Append | Out-Null
+$script:transcriptStarted = $true
+
+function Invoke-NativeCommand {
+    param(
+        [Parameter(Mandatory = $true)][string]$FilePath,
+        [Parameter(Mandatory = $true)][string[]]$ArgumentList,
+        [int[]]$AllowedExitCodes = @(0),
+        [Parameter(Mandatory = $true)][string]$FailureMessage
+    )
+
+    & $FilePath @ArgumentList
+    $exitCode = $LASTEXITCODE
+    if ($AllowedExitCodes -notcontains $exitCode) {
+        throw "$FailureMessage Exit code: $exitCode."
+    }
+}
+
+$githubToken = $env:GITHUB_TOKEN
+if (-not $githubToken) {
+    $githubToken = $env:GITHUB_TOKEN_BLANK
+}
+if (-not $githubToken) {
+    throw "GITHUB_TOKEN environment variable not set."
 }
 
 $versionEnvPath = Join-Path $PSScriptRoot "build\version.env"
@@ -21,33 +64,33 @@ if ($fileVersion) {
         $version = $fileVersion
     }
     else {
-        Write-Error "Failed to parse version (major.minor.patch[.build][-prerelease][+metadata]) from $fileVersion"
-        exit 1
+        throw "Failed to parse version (major.minor.patch[.build][-prerelease][+metadata]) from $fileVersion"
     }
 }
 else {
-    Write-Error "FILE_VERSION not found in $versionEnvPath"
-    exit 1
+    throw "FILE_VERSION not found in $versionEnvPath"
 }
 
 $zipName = "caps-$version.zip"
 $zipPath = Join-Path $PSScriptRoot $zipName
 $tagName = "v$version"
 
-git rev-parse --verify --quiet "refs/tags/$tagName" | Out-Null
-if ($LASTEXITCODE -eq 0) {
-    Write-Error "Tag $tagName already exists locally. Bump FILE_VERSION in $versionEnvPath before publishing."
-    exit 1
+& git rev-parse --verify --quiet "refs/tags/$tagName" | Out-Null
+$localTagExitCode = $LASTEXITCODE
+if ($localTagExitCode -eq 0) {
+    throw "Tag $tagName already exists locally. Bump FILE_VERSION in $versionEnvPath before publishing."
+}
+elseif ($localTagExitCode -ne 1) {
+    throw "Unable to check whether tag $tagName exists locally. Exit code: $localTagExitCode."
 }
 
-$remoteTag = git ls-remote --exit-code --tags origin "refs/tags/$tagName" 2>$null
-if ($LASTEXITCODE -eq 0 -or $remoteTag) {
-    Write-Error "Tag $tagName already exists on origin. Bump FILE_VERSION in $versionEnvPath before publishing."
-    exit 1
+$remoteTagOutput = & git ls-remote --exit-code --tags origin "refs/tags/$tagName" 2>&1
+$remoteTagExitCode = $LASTEXITCODE
+if ($remoteTagExitCode -eq 0) {
+    throw "Tag $tagName already exists on origin. Bump FILE_VERSION in $versionEnvPath before publishing."
 }
-elseif ($LASTEXITCODE -ne 2) {
-    Write-Error "Unable to check whether tag $tagName exists on origin."
-    exit 1
+elseif ($remoteTagExitCode -ne 2) {
+    throw "Unable to check whether tag $tagName exists on origin. Exit code: $remoteTagExitCode. Output: $remoteTagOutput"
 }
 
 $archiveDir = Join-Path $PSScriptRoot "archive"
@@ -80,7 +123,7 @@ if (Test-Path -LiteralPath $exePath -PathType Leaf) {
             Write-Error "Failed to move $exePath to the Recycle Bin: $($_.Exception.Message)" -ErrorAction Continue
             $retryDelete = Read-Host "Close anything using caps.exe, then retry deleting it? [y/N]"
             if ($retryDelete -notmatch '(?i)^(?:y|yes)$') {
-                exit 1
+                throw "Publishing cancelled because $exePath could not be deleted."
             }
         }
     }
@@ -89,7 +132,7 @@ if (Test-Path -LiteralPath $exePath -PathType Leaf) {
 
 & "$PSScriptRoot\make.ps1"
 if ($LASTEXITCODE -ne 0) {
-    exit $LASTEXITCODE
+    throw "Build failed. Exit code: $LASTEXITCODE."
 }
 
 $releaseFiles = @(
@@ -104,22 +147,15 @@ $releaseFiles = @(
 
 $missingFiles = $releaseFiles | Where-Object { -not (Test-Path -LiteralPath $_ -PathType Leaf) }
 if ($missingFiles) {
-    Write-Error "Cannot create $zipName because required release file(s) are missing: $($missingFiles -join ', ')"
-    exit 1
+    throw "Cannot create $zipName because required release file(s) are missing: $($missingFiles -join ', ')"
 }
 
 Compress-Archive -LiteralPath $releaseFiles -DestinationPath $zipPath
 
 # tag with version, then create a release and upload the zip
-git tag -a $tagName -m "Release version $version"
-if ($LASTEXITCODE -ne 0) {
-    exit $LASTEXITCODE
-}
+Invoke-NativeCommand -FilePath "git" -ArgumentList @("tag", "-a", $tagName, "-m", "Release version $version") -FailureMessage "Failed to create git tag $tagName."
 
-git push origin $tagName
-if ($LASTEXITCODE -ne 0) {
-    exit $LASTEXITCODE
-}
+Invoke-NativeCommand -FilePath "git" -ArgumentList @("push", "origin", $tagName) -FailureMessage "Failed to push git tag $tagName."
 
 # Create a GitHub release
 
@@ -147,3 +183,7 @@ Invoke-RestMethod -Uri $uploadUrl -Method Post -Headers @{
     "User-Agent"  = "PowerShell"
     "Content-Type" = "application/zip"
 } -InFile $zipPath
+
+Write-Host "Published $tagName and uploaded $zipName."
+Stop-Transcript | Out-Null
+$script:transcriptStarted = $false

@@ -6,3 +6,4 @@ VD.ahk-class_VD/
 *.exe
 
 build/version-info.ahk
+publish.log
