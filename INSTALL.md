@@ -1,5 +1,23 @@
 # Installation
 
+## Scripted install
+
+From the project directory, run:
+
+```powershell
+.\install.ps1
+```
+
+The script builds `caps.exe`, stops the currently installed `caps.exe` when it is running from the install directory, and copies changed release files to `C:\Programs\Caps`. Use `-InstallDir` to choose another folder, `-SkipBuild` to sync an existing build, and `-Launch` to start the installed app after syncing.
+
+Example:
+
+```powershell
+.\install.ps1 -InstallDir "$env:LocalAppData\Programs\Caps" -Launch
+```
+
+## Manual install
+
 1. Recommended path:
 
 		\Programs\Caps\
