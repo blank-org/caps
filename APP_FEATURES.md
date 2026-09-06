@@ -2,6 +2,10 @@
 
 Caps repurposes the <kbd>CapsLock</kbd> key as a hold-modifier that activates a navigation/editing layer, so the hands never leave the home row. Reference: full key table in [README.md](README.md), visual map in `keyboard-map-tks.svg` (also on <kbd>Caps</kbd>+<kbd>=</kbd>).
 
+## macOS port (scaffold)
+
+A native macOS app lives in [`macos/`](macos/README.md). The current build is a **menu-bar shell only** (Settings, About, Suspend placeholder) — no Caps layer remapping yet. Module stubs: `CapsInput`, `CapsKeyMap`, `CapsConfig`, `CapsSystem`.
+
 ## Caps layer basics
 
 - **Hold <kbd>Caps</kbd>** — layer active while held.

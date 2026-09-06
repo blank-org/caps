@@ -113,7 +113,12 @@ In case if you ever need to disable `caps` functionality you may suspend the pro
 
 ## Supported platforms
 
-`Windows`
+| Platform | Status |
+|----------|--------|
+| **Windows** | Shipping (`caps.ahk` → `caps.exe`) |
+| **macOS** | In progress — native Swift port scaffold in [`macos/`](macos/README.md) |
+
+See [macos/README.md](macos/README.md) for building the macOS app in Xcode.
 
 ## Additional repo depedency
 
@@ -126,4 +131,4 @@ Place in root
 
 ## Todo
 
-MacOS support likely using: [hammerspoon](https://www.hammerspoon.org)
+- macOS: implement keyboard layer in the native Swift port ([`macos/`](macos/README.md))
