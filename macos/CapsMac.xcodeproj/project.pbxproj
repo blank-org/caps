@@ -1,0 +1,442 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5F3A1B2C3D4E5F6071829401 /* CapsMacApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3A1B2C3D4E5F60718293C1 /* CapsMacApp.swift */; };
+		5F3A1B2C3D4E5F6071829402 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3A1B2C3D4E5F60718293C2 /* AppDelegate.swift */; };
+		5F3A1B2C3D4E5F6071829403 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3A1B2C3D4E5F60718293C3 /* AppState.swift */; };
+		5F3A1B2C3D4E5F6071829404 /* MenuBarContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3A1B2C3D4E5F60718293C4 /* MenuBarContentView.swift */; };
+		5F3A1B2C3D4E5F6071829405 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3A1B2C3D4E5F60718293C5 /* SettingsView.swift */; };
+		5F3A1B2C3D4E5F6071829406 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3A1B2C3D4E5F60718293C6 /* AboutView.swift */; };
+		5F3A1B2C3D4E5F6071829407 /* CapsModifierState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3A1B2C3D4E5F60718293C7 /* CapsModifierState.swift */; };
+		5F3A1B2C3D4E5F6071829408 /* CapsInputHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3A1B2C3D4E5F60718293C8 /* CapsInputHandler.swift */; };
+		5F3A1B2C3D4E5F6071829409 /* ShortcutAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3A1B2C3D4E5F60718293C9 /* ShortcutAction.swift */; };
+		5F3A1B2C3D4E5F607182940A /* KeyMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3A1B2C3D4E5F60718293CA /* KeyMap.swift */; };
+		5F3A1B2C3D4E5F607182940B /* CapsConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3A1B2C3D4E5F60718293CB /* CapsConfiguration.swift */; };
+		5F3A1B2C3D4E5F607182940C /* ConfigStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3A1B2C3D4E5F60718293CC /* ConfigStore.swift */; };
+		5F3A1B2C3D4E5F607182940D /* AccessibilityPermission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3A1B2C3D4E5F60718293CD /* AccessibilityPermission.swift */; };
+		5F3A1B2C3D4E5F607182940E /* SystemIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3A1B2C3D4E5F60718293CE /* SystemIntegration.swift */; };
+		5F3A1B2C3D4E5F6071829411 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F3A1B2C3D4E5F60718293D1 /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		5F3A1B2C3D4E5F60718293A6 /* CapsMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CapsMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F3A1B2C3D4E5F60718293C1 /* CapsMacApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsMacApp.swift; sourceTree = "<group>"; };
+		5F3A1B2C3D4E5F60718293C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		5F3A1B2C3D4E5F60718293C3 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		5F3A1B2C3D4E5F60718293C4 /* MenuBarContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarContentView.swift; sourceTree = "<group>"; };
+		5F3A1B2C3D4E5F60718293C5 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		5F3A1B2C3D4E5F60718293C6 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		5F3A1B2C3D4E5F60718293C7 /* CapsModifierState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsModifierState.swift; sourceTree = "<group>"; };
+		5F3A1B2C3D4E5F60718293C8 /* CapsInputHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsInputHandler.swift; sourceTree = "<group>"; };
+		5F3A1B2C3D4E5F60718293C9 /* ShortcutAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutAction.swift; sourceTree = "<group>"; };
+		5F3A1B2C3D4E5F60718293CA /* KeyMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyMap.swift; sourceTree = "<group>"; };
+		5F3A1B2C3D4E5F60718293CB /* CapsConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsConfiguration.swift; sourceTree = "<group>"; };
+		5F3A1B2C3D4E5F60718293CC /* ConfigStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigStore.swift; sourceTree = "<group>"; };
+		5F3A1B2C3D4E5F60718293CD /* AccessibilityPermission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilityPermission.swift; sourceTree = "<group>"; };
+		5F3A1B2C3D4E5F60718293CE /* SystemIntegration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemIntegration.swift; sourceTree = "<group>"; };
+		5F3A1B2C3D4E5F60718293D1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5F3A1B2C3D4E5F60718293D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5F3A1B2C3D4E5F60718293A9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5F3A1B2C3D4E5F60718293B2 = {
+			isa = PBXGroup;
+			children = (
+				5F3A1B2C3D4E5F60718293B3 /* CapsMac */,
+				5F3A1B2C3D4E5F60718293B4 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5F3A1B2C3D4E5F60718293B3 /* CapsMac */ = {
+			isa = PBXGroup;
+			children = (
+				5F3A1B2C3D4E5F60718293C1 /* CapsMacApp.swift */,
+				5F3A1B2C3D4E5F60718293E1 /* App */,
+				5F3A1B2C3D4E5F60718293E2 /* Views */,
+				5F3A1B2C3D4E5F60718293E3 /* Modules */,
+				5F3A1B2C3D4E5F60718293E8 /* Resources */,
+			);
+			path = CapsMac;
+			sourceTree = "<group>";
+		};
+		5F3A1B2C3D4E5F60718293B4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5F3A1B2C3D4E5F60718293A6 /* CapsMac.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5F3A1B2C3D4E5F60718293E1 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				5F3A1B2C3D4E5F60718293C2 /* AppDelegate.swift */,
+				5F3A1B2C3D4E5F60718293C3 /* AppState.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		5F3A1B2C3D4E5F60718293E2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5F3A1B2C3D4E5F60718293C4 /* MenuBarContentView.swift */,
+				5F3A1B2C3D4E5F60718293C5 /* SettingsView.swift */,
+				5F3A1B2C3D4E5F60718293C6 /* AboutView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5F3A1B2C3D4E5F60718293E3 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				5F3A1B2C3D4E5F60718293E4 /* CapsInput */,
+				5F3A1B2C3D4E5F60718293E5 /* CapsKeyMap */,
+				5F3A1B2C3D4E5F60718293E6 /* CapsConfig */,
+				5F3A1B2C3D4E5F60718293E7 /* CapsSystem */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		5F3A1B2C3D4E5F60718293E4 /* CapsInput */ = {
+			isa = PBXGroup;
+			children = (
+				5F3A1B2C3D4E5F60718293C7 /* CapsModifierState.swift */,
+				5F3A1B2C3D4E5F60718293C8 /* CapsInputHandler.swift */,
+			);
+			path = CapsInput;
+			sourceTree = "<group>";
+		};
+		5F3A1B2C3D4E5F60718293E5 /* CapsKeyMap */ = {
+			isa = PBXGroup;
+			children = (
+				5F3A1B2C3D4E5F60718293C9 /* ShortcutAction.swift */,
+				5F3A1B2C3D4E5F60718293CA /* KeyMap.swift */,
+			);
+			path = CapsKeyMap;
+			sourceTree = "<group>";
+		};
+		5F3A1B2C3D4E5F60718293E6 /* CapsConfig */ = {
+			isa = PBXGroup;
+			children = (
+				5F3A1B2C3D4E5F60718293CB /* CapsConfiguration.swift */,
+				5F3A1B2C3D4E5F60718293CC /* ConfigStore.swift */,
+			);
+			path = CapsConfig;
+			sourceTree = "<group>";
+		};
+		5F3A1B2C3D4E5F60718293E7 /* CapsSystem */ = {
+			isa = PBXGroup;
+			children = (
+				5F3A1B2C3D4E5F60718293CD /* AccessibilityPermission.swift */,
+				5F3A1B2C3D4E5F60718293CE /* SystemIntegration.swift */,
+			);
+			path = CapsSystem;
+			sourceTree = "<group>";
+		};
+		5F3A1B2C3D4E5F60718293E8 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5F3A1B2C3D4E5F60718293D1 /* Assets.xcassets */,
+				5F3A1B2C3D4E5F60718293D2 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5F3A1B2C3D4E5F60718293A5 /* CapsMac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5F3A1B2C3D4E5F60718293AD /* Build configuration list for PBXNativeTarget "CapsMac" */;
+			buildPhases = (
+				5F3A1B2C3D4E5F60718293A7 /* Sources */,
+				5F3A1B2C3D4E5F60718293A9 /* Frameworks */,
+				5F3A1B2C3D4E5F60718293A8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CapsMac;
+			productName = CapsMac;
+			productReference = 5F3A1B2C3D4E5F60718293A6 /* CapsMac.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5F3A1B2C3D4E5F60718293A4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					5F3A1B2C3D4E5F60718293A5 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = 5F3A1B2C3D4E5F60718293AC /* Build configuration list for PBXProject "CapsMac" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5F3A1B2C3D4E5F60718293B2;
+			productRefGroup = 5F3A1B2C3D4E5F60718293B4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5F3A1B2C3D4E5F60718293A5 /* CapsMac */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5F3A1B2C3D4E5F60718293A8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F3A1B2C3D4E5F6071829411 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5F3A1B2C3D4E5F60718293A7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F3A1B2C3D4E5F6071829401 /* CapsMacApp.swift in Sources */,
+				5F3A1B2C3D4E5F6071829402 /* AppDelegate.swift in Sources */,
+				5F3A1B2C3D4E5F6071829403 /* AppState.swift in Sources */,
+				5F3A1B2C3D4E5F6071829404 /* MenuBarContentView.swift in Sources */,
+				5F3A1B2C3D4E5F6071829405 /* SettingsView.swift in Sources */,
+				5F3A1B2C3D4E5F6071829406 /* AboutView.swift in Sources */,
+				5F3A1B2C3D4E5F6071829407 /* CapsModifierState.swift in Sources */,
+				5F3A1B2C3D4E5F6071829408 /* CapsInputHandler.swift in Sources */,
+				5F3A1B2C3D4E5F6071829409 /* ShortcutAction.swift in Sources */,
+				5F3A1B2C3D4E5F607182940A /* KeyMap.swift in Sources */,
+				5F3A1B2C3D4E5F607182940B /* CapsConfiguration.swift in Sources */,
+				5F3A1B2C3D4E5F607182940C /* ConfigStore.swift in Sources */,
+				5F3A1B2C3D4E5F607182940D /* AccessibilityPermission.swift in Sources */,
+				5F3A1B2C3D4E5F607182940E /* SystemIntegration.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		5F3A1B2C3D4E5F60718293AE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		5F3A1B2C3D4E5F60718293AF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		5F3A1B2C3D4E5F60718293B0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = CapsMac/Resources/Info.plist;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2026. Caps macOS port.";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = tech.avyaan.caps.mac;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		5F3A1B2C3D4E5F60718293B1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = CapsMac/Resources/Info.plist;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2026. Caps macOS port.";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = tech.avyaan.caps.mac;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5F3A1B2C3D4E5F60718293AC /* Build configuration list for PBXProject "CapsMac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5F3A1B2C3D4E5F60718293AE /* Debug */,
+				5F3A1B2C3D4E5F60718293AF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5F3A1B2C3D4E5F60718293AD /* Build configuration list for PBXNativeTarget "CapsMac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5F3A1B2C3D4E5F60718293B0 /* Debug */,
+				5F3A1B2C3D4E5F60718293B1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5F3A1B2C3D4E5F60718293A4 /* Project object */;
+}

@@ -7,3 +7,9 @@ VD.ahk-class_VD/
 
 build/version-info.ahk
 publish.log
+
+# macOS / Xcode
+macos/build/
+macos/DerivedData/
+**/*.xcuserstate
+**/xcuserdata/
